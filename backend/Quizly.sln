@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{227893B1-FD60-49F9-BB88-6A9EC1B09781}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quizly.Api", "src\Quizly.Api\Quizly.Api.csproj", "{418BCC52-30F1-4081-86E5-4970971E1AFC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{18CC546D-C3F1-4226-8811-247891A58BFE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Users", "Users", "{C5B9ED54-EA71-4E3A-8B90-20C6C0C8250E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quizly.Modules.Users.Api", "src\Modules\Users\Quizly.Modules.Users.Api\Quizly.Modules.Users.Api.csproj", "{1EC6280C-2585-4155-A897-5B8445BC084D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quizly.Users.Modules.Domain", "src\Modules\Users\Quizly.Users.Modules.Domain\Quizly.Users.Modules.Domain.csproj", "{86AB1919-2E04-4516-9591-2E41654BEEFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quizly.Users.Modules.Application", "src\Modules\Users\Quizly.Users.Modules.Application\Quizly.Users.Modules.Application.csproj", "{0392A346-94AB-4BEC-8621-9F88C44B4D6E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{418BCC52-30F1-4081-86E5-4970971E1AFC} = {227893B1-FD60-49F9-BB88-6A9EC1B09781}
+		{18CC546D-C3F1-4226-8811-247891A58BFE} = {227893B1-FD60-49F9-BB88-6A9EC1B09781}
+		{C5B9ED54-EA71-4E3A-8B90-20C6C0C8250E} = {18CC546D-C3F1-4226-8811-247891A58BFE}
+		{1EC6280C-2585-4155-A897-5B8445BC084D} = {C5B9ED54-EA71-4E3A-8B90-20C6C0C8250E}
+		{86AB1919-2E04-4516-9591-2E41654BEEFF} = {C5B9ED54-EA71-4E3A-8B90-20C6C0C8250E}
+		{0392A346-94AB-4BEC-8621-9F88C44B4D6E} = {C5B9ED54-EA71-4E3A-8B90-20C6C0C8250E}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{418BCC52-30F1-4081-86E5-4970971E1AFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{418BCC52-30F1-4081-86E5-4970971E1AFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{418BCC52-30F1-4081-86E5-4970971E1AFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{418BCC52-30F1-4081-86E5-4970971E1AFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EC6280C-2585-4155-A897-5B8445BC084D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EC6280C-2585-4155-A897-5B8445BC084D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EC6280C-2585-4155-A897-5B8445BC084D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EC6280C-2585-4155-A897-5B8445BC084D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86AB1919-2E04-4516-9591-2E41654BEEFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86AB1919-2E04-4516-9591-2E41654BEEFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86AB1919-2E04-4516-9591-2E41654BEEFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86AB1919-2E04-4516-9591-2E41654BEEFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0392A346-94AB-4BEC-8621-9F88C44B4D6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0392A346-94AB-4BEC-8621-9F88C44B4D6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0392A346-94AB-4BEC-8621-9F88C44B4D6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0392A346-94AB-4BEC-8621-9F88C44B4D6E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
