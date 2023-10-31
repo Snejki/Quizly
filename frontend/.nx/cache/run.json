@@ -1,0 +1,21 @@
+{
+  "run": {
+    "command": "nx serve application --verbose",
+    "startTime": "2023-10-31T23:07:32.619Z",
+    "endTime": "2023-10-31T23:07:32.907Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "application:serve:development",
+      "target": "serve",
+      "projectName": "application",
+      "hash": "12320263581935314526",
+      "startTime": "2023-10-31T23:07:32.625Z",
+      "endTime": "2023-10-31T23:07:32.906Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 1
+    }
+  ]
+}
