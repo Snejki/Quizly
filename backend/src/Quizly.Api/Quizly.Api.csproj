@@ -4,6 +4,12 @@
         <TargetFramework>net8.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <InvariantGlobalization>true</InvariantGlobalization>
     </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Modules\Users\Quizly.Modules.Users.Api\Quizly.Modules.Users.Api.csproj" />
+      <ProjectReference Include="..\Shared\Quizly.Shared.Infrastructure\Quizly.Shared.Infrastructure.csproj" />
+    </ItemGroup>
 
 </Project>

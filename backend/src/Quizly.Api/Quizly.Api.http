@@ -1,0 +1,6 @@
+@Quizly.Api_HostAddress = http://localhost:5215
+
+GET {{Quizly.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
