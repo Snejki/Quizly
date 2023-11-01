@@ -5,6 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Quizly.Shared.Abstractions.Modules;
 using Quizly.Shared.Infrastructure.Clock;
 using Quizly.Shared.Infrastructure.Endpoints;
+using Quizly.Shared.Infrastructure.Exceptions;
 using Quizly.Shared.Infrastructure.Logger;
 using Quizly.Shared.Infrastructure.Mediatr;
 using Quizly.Shared.Infrastructure.Modules;
@@ -20,6 +21,7 @@ public static class InfrastructureExtensions
         builder.Services.AddMediatr(assemblies);
         builder.Services.AddModules(modules);
         builder.Services.AddClock();
+        builder.Services.AddCustomExceptionHandling();
         
         builder.Host.AddCustomLogger();
     }
@@ -32,6 +34,7 @@ public static class InfrastructureExtensions
             app.UseSwaggerUI();
         }
 
+        app.UseCustomExceptionHandling();
         app.UseModules(modules);
         app.UseEndpoints(assemblies.ToArray());
         app.UseHttpsRedirection();
