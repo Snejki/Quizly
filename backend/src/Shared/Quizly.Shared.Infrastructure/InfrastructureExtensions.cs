@@ -9,6 +9,7 @@ using Quizly.Shared.Infrastructure.Exceptions;
 using Quizly.Shared.Infrastructure.Logger;
 using Quizly.Shared.Infrastructure.Mediatr;
 using Quizly.Shared.Infrastructure.Modules;
+using Quizly.Shared.Infrastructure.Validations;
 
 namespace Quizly.Shared.Infrastructure;
 
@@ -18,10 +19,11 @@ public static class InfrastructureExtensions
     {
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
-        builder.Services.AddMediatr(assemblies);
+        builder.Services.AddCustomMediatr(assemblies);
         builder.Services.AddModules(modules);
         builder.Services.AddClock();
         builder.Services.AddCustomExceptionHandling();
+        builder.Services.AddCustomValidation(assemblies);
         
         builder.Host.AddCustomLogger();
     }
