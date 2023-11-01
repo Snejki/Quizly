@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Quizly.Shared.Abstractions.Modules;
+using Quizly.Shared.Infrastructure.Clock;
 using Quizly.Shared.Infrastructure.Endpoints;
 using Quizly.Shared.Infrastructure.Mediatr;
 using Quizly.Shared.Infrastructure.Modules;
@@ -17,11 +18,11 @@ public static class InfrastructureExtensions
         builder.Services.AddSwaggerGen();
         builder.Services.AddMediatr(assemblies);
         builder.Services.AddModules(modules);
+        builder.Services.AddClock();
     }
 
     public static void UseModularInfrastructure(this WebApplication app, IList<Assembly> assemblies, IList<IModule> modules)
     {
-        // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
