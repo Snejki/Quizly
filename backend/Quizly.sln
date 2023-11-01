@@ -8,9 +8,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Users", "Users", "{C5B9ED54
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quizly.Modules.Users.Api", "src\Modules\Users\Quizly.Modules.Users.Api\Quizly.Modules.Users.Api.csproj", "{1EC6280C-2585-4155-A897-5B8445BC084D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quizly.Users.Modules.Domain", "src\Modules\Users\Quizly.Users.Modules.Domain\Quizly.Users.Modules.Domain.csproj", "{86AB1919-2E04-4516-9591-2E41654BEEFF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quizly.Modules.Users.Domain", "src\Modules\Users\Quizly.Modules.Users.Domain\Quizly.Modules.Users.Domain.csproj", "{86AB1919-2E04-4516-9591-2E41654BEEFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quizly.Users.Modules.Application", "src\Modules\Users\Quizly.Users.Modules.Application\Quizly.Users.Modules.Application.csproj", "{0392A346-94AB-4BEC-8621-9F88C44B4D6E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quizly.Modules.Users.Application", "src\Modules\Users\Quizly.Modules.Users.Application\Quizly.Modules.Users.Application.csproj", "{0392A346-94AB-4BEC-8621-9F88C44B4D6E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{44189CAD-CC7D-4759-A699-D3E5F5397FEC}"
 EndProject

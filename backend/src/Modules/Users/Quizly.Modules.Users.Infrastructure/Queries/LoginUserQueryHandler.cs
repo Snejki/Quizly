@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using Quizly.Users.Modules.Application.Queries;
+using Quizly.Modules.Users.Application.Queries;
 
 namespace Quizly.Modules.Users.Infrastructure.Queries;
 

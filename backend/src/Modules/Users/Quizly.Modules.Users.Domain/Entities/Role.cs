@@ -1,4 +1,4 @@
-﻿namespace Quizly.Users.Modules.Domain.Entities;
+﻿namespace Quizly.Modules.Users.Domain.Entities;
 
 public class Role
 {

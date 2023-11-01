@@ -8,7 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Shared\Quizly.Shared.Abstractions\Quizly.Shared.Abstractions.csproj" />
-      <ProjectReference Include="..\Quizly.Users.Modules.Domain\Quizly.Users.Modules.Domain.csproj" />
+      <ProjectReference Include="..\Quizly.Modules.Users.Domain\Quizly.Modules.Users.Domain.csproj" />
     </ItemGroup>
 
     <ItemGroup>

@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+using Quizly.Modules.Users.Application.Queries;
 using Quizly.Shared.Abstractions.Endpoints;
-using Quizly.Users.Modules.Application.Queries;
 
 namespace Quizly.Modules.Users.Api.Endpoints;
 

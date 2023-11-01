@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Quizly.Users.Modules.Application.Queries;
+namespace Quizly.Modules.Users.Application.Queries;
 
 
 public record LoginUserQuery(string Login, string Password) : IRequest<LoginUserResponse>;
