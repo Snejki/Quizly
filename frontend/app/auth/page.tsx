@@ -1,6 +1,9 @@
 "use client";
 
-import InputControlledField from "@/lib/forms/InputControlled";
+import {
+  InputFieldControlled,
+  SelectFieldControlled,
+} from "@/lib/forms/fields";
 import { Button, Center, FormControl } from "@chakra-ui/react";
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
@@ -16,17 +19,22 @@ const Login = () => {
       <Center>
         <FormProvider {...methods}>
           <FormControl>
-            <InputControlledField
+            <InputFieldControlled
               name="email"
               label="Email"
               type="text"
               rules={{ validate: { isValid: (value: string) => "ERROR" } }}
             />
-            <InputControlledField
+            <InputFieldControlled
               name="password"
               label="Password"
               type="password"
             />
+            <SelectFieldControlled name="password" label="Password">
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+            </SelectFieldControlled>
             <Button colorScheme="blue" onClick={methods.handleSubmit(onSubmit)}>
               Submit
             </Button>
