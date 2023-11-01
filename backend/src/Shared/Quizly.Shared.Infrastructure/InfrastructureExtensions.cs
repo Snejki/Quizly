@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Quizly.Shared.Abstractions.Modules;
 using Quizly.Shared.Infrastructure.Endpoints;
+using Quizly.Shared.Infrastructure.Mediatr;
 using Quizly.Shared.Infrastructure.Modules;
 
 namespace Quizly.Shared.Infrastructure;
@@ -14,6 +15,7 @@ public static class InfrastructureExtensions
     {
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        builder.Services.AddMediatr(assemblies);
         builder.Services.AddModules(modules);
     }
 
