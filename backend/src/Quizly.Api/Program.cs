@@ -1,6 +1,12 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using Quizly.Shared.Infrastructure;
+using Quizly.Shared.Infrastructure.Modules;
 
-app.MapGet("/", () => "Hello World!");
+var builder = WebApplication.CreateBuilder(args);
+var assemblies = ModulesLoader.LoadAssemblies(builder.Configuration);
+var modules = ModulesLoader.LoadModules(assemblies);
+
+builder.AddModularInfrastructure(assemblies, modules);
+var app = builder.Build();
+app.UseModularInfrastructure(assemblies, modules);
 
 app.Run();
