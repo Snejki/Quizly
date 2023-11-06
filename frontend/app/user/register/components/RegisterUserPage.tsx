@@ -1,17 +1,22 @@
 import { createUser } from "@/app/lib/api/user/usersRepository";
 import { InputFieldControlled } from "@/lib/forms/fields";
-import { Button, Center, FormControl } from "@chakra-ui/react";
+import { Button, Center, FormControl, FormLabel } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { z } from "zod";
 
-const validationSchema = z.object({
-  email: z.string().email(),
-  login: z.string().min(1),
-  password: z.string(),
-  confirmPassword: z.string(),
-});
+const validationSchema = z
+  .object({
+    email: z.string().email(),
+    login: z.string().min(1),
+    password: z.string().min(1),
+    confirmPassword: z.string(),
+  })
+  .refine((schema) => schema.password === schema.confirmPassword, {
+    message: "Passwords did not match",
+    path: ["confirmPassword"],
+  });
 
 type RegisterUserForm = z.infer<typeof validationSchema>;
 
@@ -30,18 +35,14 @@ const RegisterUserPage = () => {
       <Center>
         <FormProvider {...methods}>
           <FormControl>
-            <InputFieldControlled name="email" label="Email" type="email" />
-            <InputFieldControlled name="login" label="Login" type="text" />
-            <InputFieldControlled
-              name="password"
-              label="Password"
-              type="password"
-            />
-            <InputFieldControlled
-              name="confirmPassword"
-              label="Confirm password"
-              type="password"
-            />
+            <FormLabel>Email</FormLabel>
+            <InputFieldControlled name="email" type="email" />
+            <FormLabel>Login</FormLabel>
+            <InputFieldControlled name="login" type="text" />
+            <FormLabel>Password</FormLabel>
+            <InputFieldControlled name="password" type="password" />
+            <FormLabel>Confirm Password</FormLabel>
+            <InputFieldControlled name="confirmPassword" type="password" />
             <Button colorScheme="blue" onClick={methods.handleSubmit(onSubmit)}>
               Register
             </Button>

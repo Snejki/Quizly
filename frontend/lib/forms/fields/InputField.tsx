@@ -1,13 +1,12 @@
-import { FormLabel, Input } from "@chakra-ui/react";
+import { Input } from "@chakra-ui/react";
 import React from "react";
 import { WrappedComponentProps } from "../withControlledField";
 
-const InputField = ({ label, error, ...other }: WrappedComponentProps) => {
+const InputField = ({ error, ...other }: WrappedComponentProps) => {
   return (
     <>
-      <FormLabel>{label}</FormLabel>
       <Input {...other} isInvalid={!!error} />
-      {error && <>{error.message}</>}
+      {error && <div style={{ color: "red" }}>{error.message}</div>}
     </>
   );
 };

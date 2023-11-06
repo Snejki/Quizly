@@ -20,9 +20,8 @@ interface FormProps {
 
 export type WrappedComponentProps = InputProps & {
   error: FieldError | undefined;
-  label: string;
 };
-type ComponentProps = FormProps & InputProps & { label: string };
+type ComponentProps = FormProps & InputProps;
 
 export default function withControlledField(
   WrappedComponent: React.FC<WrappedComponentProps>
