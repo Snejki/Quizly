@@ -1,9 +1,17 @@
+import { ErrorResponse, isValidationError } from "@/app/lib/api/apiException";
 import { createUser } from "@/app/lib/api/user/usersRepository";
 import { InputFieldControlled } from "@/lib/forms/fields";
 import { Button, Center, FormControl, FormLabel } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { AxiosError, isAxiosError } from "axios";
 import React from "react";
-import { FormProvider, useForm } from "react-hook-form";
+import {
+  FieldValue,
+  FieldValues,
+  FormProvider,
+  UseFormSetError,
+  useForm,
+} from "react-hook-form";
 import { z } from "zod";
 
 const validationSchema = z
@@ -27,7 +35,12 @@ const RegisterUserPage = () => {
   });
 
   const onSubmit = async (form: RegisterUserForm) => {
-    const response = await createUser(form);
+    try {
+      const response = await createUser(form);
+      console.log("AFTER");
+    } catch (error) {
+      handleValidationErrors(error, methods.setError);
+    }
   };
 
   return (
@@ -54,3 +67,19 @@ const RegisterUserPage = () => {
 };
 
 export default RegisterUserPage;
+
+function handleValidationErrors<T extends FieldValues>(
+  error: any,
+  setError: UseFormSetError<T>
+) {
+  if (isAxiosError(error)) {
+    const errorResponse = error.response?.data;
+    if (isValidationError(errorResponse)) {
+      errorResponse.errors.forEach((element) => {
+        // @ts-ignore
+        console.log(element.propertyName);
+        setError(element.propertyName, { message: element.errorMessage });
+      });
+    }
+  }
+}

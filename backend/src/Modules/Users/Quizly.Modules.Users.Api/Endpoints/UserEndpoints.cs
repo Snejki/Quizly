@@ -2,20 +2,20 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
-using Quizly.Modules.Users.Application.Queries;
+using Quizly.Modules.Users.Application.Commands;
 using Quizly.Shared.Abstractions.Endpoints;
 
 namespace Quizly.Modules.Users.Api.Endpoints;
 
 // ReSharper disable once UnusedType.Global
-public class AuthEndpoints : IEndpoint
+public class UserEndpoints : IEndpoint
 {
     public void UseEndpoints(IEndpointRouteBuilder app)
     {
-        app.MapPost("auth/login", async (LoginUserQuery query, IMediator mediator, CancellationToken ct) =>
+        app.MapPost("user/register", async (RegisterUserCommand command, IMediator mediator, CancellationToken ct) =>
         {
-            var response = await mediator.Send(query, ct);
-            return Results.Ok(response);
+            await mediator.Send(command, ct);
+            return Results.Created();
         });
     }
-}
+}   

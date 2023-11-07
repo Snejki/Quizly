@@ -11,5 +11,11 @@ internal static class ValidationsExtensions
     {
         services.AddFluentValidationClientsideAdapters();
         services.AddValidatorsFromAssemblies(assemblies);
+
+        FluentValidation.ValidatorOptions.Global.PropertyNameResolver = (type, memberInfo, expression) =>
+        {
+            var propertyName = memberInfo.Name;
+            return Char.ToLowerInvariant(propertyName[0]) + propertyName.Substring(1);
+        };
     }
 }

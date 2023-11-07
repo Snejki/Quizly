@@ -28,7 +28,6 @@ export default function withControlledField(
 ) {
   const Component = ({ name, rules, ...other }: ComponentProps) => {
     const { control } = useFormContext();
-
     return (
       <Controller
         name={name}

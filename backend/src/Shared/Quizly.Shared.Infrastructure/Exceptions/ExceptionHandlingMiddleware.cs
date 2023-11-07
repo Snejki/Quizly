@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
 using Quizly.Shared.Abstractions.Exceptions;
 
@@ -31,11 +32,13 @@ internal class ExceptionHandlingMiddleware : IMiddleware
     private ErrorResponse MapException(Exception exception) => exception switch
     {
         QuizlyException e => new ErrorResponse(new Error(nameof(QuizlyException), e.Message), HttpStatusCode.BadRequest),
-        ValidationException e => new ErrorResponse(new Error(nameof(ValidationException), e.Message), HttpStatusCode.BadRequest),
+        ValidationException e => new ErrorResponse(new ValidationError(nameof(ValidationException), "Some field values are invalid", e.Errors), HttpStatusCode.BadRequest),
         _ => new ErrorResponse(new Error("unexpected_error", "There was an error"), HttpStatusCode.InternalServerError)
     };
 }
 
 internal record Error(string Code, string Message);
+internal record ValidationError(string Code, string Message, IEnumerable<ValidationFailure> Errors);
+
 
 internal record ErrorResponse(object Response, HttpStatusCode StatusCode);

@@ -24,12 +24,24 @@ public static class InfrastructureExtensions
         builder.Services.AddClock();
         builder.Services.AddCustomExceptionHandling();
         builder.Services.AddCustomValidation(assemblies);
-        
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAll",
+                builder =>
+                {
+                    builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                });
+        });
         builder.Host.AddCustomLogger();
     }
 
     public static void UseModularInfrastructure(this WebApplication app, IList<Assembly> assemblies, IList<IModule> modules)
     {
+        app.UseCors("AllowAll");
+
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
