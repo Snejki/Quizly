@@ -1,12 +1,8 @@
 import axios, { isAxiosError } from "axios";
-import {
-  CreateStandaloneToastReturn,
-  createStandaloneToast,
-} from "@chakra-ui/react";
 import { isApiErrorResponse } from "./apiException";
+import { toastError } from "../toast/toast";
 
 const apiClient = axios.create({});
-const standaloneToast = createStandaloneToast({});
 
 apiClient.interceptors.response.use(
   (response) => response,
@@ -14,7 +10,7 @@ apiClient.interceptors.response.use(
     if (isAxiosError(error)) {
       const errorResponse = error.response?.data;
       if (isApiErrorResponse(errorResponse)) {
-        toastError(standaloneToast, errorResponse.message);
+        toastError(errorResponse.message);
       }
     }
 
@@ -23,15 +19,3 @@ apiClient.interceptors.response.use(
 );
 
 export default apiClient;
-
-const toastError = (
-  standaloneToast: CreateStandaloneToastReturn,
-  title: string
-) => {
-  standaloneToast.toast({
-    title: title,
-    colorScheme: "red",
-    isClosable: true,
-    position: "top-right",
-  });
-};
