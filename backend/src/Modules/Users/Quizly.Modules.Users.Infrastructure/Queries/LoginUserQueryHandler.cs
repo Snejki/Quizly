@@ -5,6 +5,7 @@ using Quizly.Modules.Users.Application.Queries;
 using Quizly.Modules.Users.Application.Services;
 using Quizly.Modules.Users.Domain;
 using Quizly.Modules.Users.Domain.Repositories;
+using Quizly.Modules.Users.Infrastructure.Mappers;
 using Quizly.Shared.Abstractions.Exceptions;
 
 namespace Quizly.Modules.Users.Infrastructure.Queries;
@@ -44,11 +45,11 @@ public class LoginUserQueryHandler : IRequestHandler<LoginUserQuery, LoginUserRe
              throw new IncorrectPassword();
          }
         
-        
+         // TODO return access token and refresh token and save refresh to database :P
          // TODO: check if is active;
         
-         var token = _tokenService.GenerateAccessToken(user.Id, user.Login);
+         var accessToken = _tokenService.GenerateAccessToken(user.Id, user.Login);
 
-        return new LoginUserResponse(token, user.Login.Value, user.Avatar?.Path);
+         return user.ToLoginUserResponse(accessToken);
     }
 }

@@ -11,8 +11,4 @@
       <ProjectReference Include="..\Quizly.Modules.Users.Domain\Quizly.Modules.Users.Domain.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Dtos\" />
-    </ItemGroup>
-
 </Project>

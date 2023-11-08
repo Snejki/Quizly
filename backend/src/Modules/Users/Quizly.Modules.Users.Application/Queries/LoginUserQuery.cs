@@ -3,6 +3,10 @@
 namespace Quizly.Modules.Users.Application.Queries;
 
 
-public record LoginUserQuery(string Login, string Password) : IRequest<LoginUserResponse>;
+public class LoginUserQuery : IRequest<LoginUserResponse>
+{
+    public string Login { get; set; }
+    public string Password { get; set; }
+}
 
 public record LoginUserResponse(string Token, string Login, string? AvatarPath);
