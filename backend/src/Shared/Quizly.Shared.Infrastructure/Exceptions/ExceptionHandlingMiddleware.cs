@@ -2,12 +2,21 @@
 using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 using Quizly.Shared.Abstractions.Exceptions;
+using ILogger = Serilog.ILogger;
 
 namespace Quizly.Shared.Infrastructure.Exceptions;
 
 internal class ExceptionHandlingMiddleware : IMiddleware
 {
+    private readonly ILogger<ExceptionHandlingMiddleware> _logger;
+
+    public ExceptionHandlingMiddleware(ILogger<ExceptionHandlingMiddleware> logger)
+    {
+        _logger = logger;
+    }
+
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
         try
@@ -16,6 +25,8 @@ internal class ExceptionHandlingMiddleware : IMiddleware
         }
         catch (Exception e)
         {
+            // TODO: log not every exception
+            _logger.LogError("{Exception}", e);
             await HandleException(context, e);
         }    
     }

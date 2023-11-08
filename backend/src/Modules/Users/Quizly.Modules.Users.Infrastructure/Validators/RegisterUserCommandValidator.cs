@@ -8,6 +8,9 @@ public class RegisterUserCommandValidator : AbstractValidator<RegisterUserComman
 {
     public RegisterUserCommandValidator()
     {
-        RuleFor(x => x.Login).MinimumLength(3);
+        RuleFor(x => x.Email).EmailAddress();
+        RuleFor(x => x.Login).MinimumLength(8).MaximumLength(24);
+        RuleFor(x => x.Password).MinimumLength(8);
+        RuleFor(x => x.ConfirmPassword).Equal(x => x.Password);
     }
 }

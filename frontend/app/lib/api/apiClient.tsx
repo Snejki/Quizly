@@ -11,9 +11,11 @@ apiClient.interceptors.response.use(
       const errorResponse = error.response?.data;
       if (isApiErrorResponse(errorResponse)) {
         toastError(errorResponse.message);
+        return Promise.reject(error);
       }
     }
 
+    toastError(error.message);
     return Promise.reject(error);
   }
 );

@@ -6,12 +6,17 @@ namespace Quizly.Modules.Users.Infrastructure.Repositories;
 
 internal class UserRepository : IUserRepository
 {
-    public Task<User> GetById(UserId userId, CancellationToken ct = default)
+    public Task<User?> GetById(UserId userId, CancellationToken ct = default)
     {
         throw new NotImplementedException();
     }
 
-    public Task<User> GetByEmail(Email email, CancellationToken ct = default)
+    public Task<User?> GetByEmail(Email email, CancellationToken ct = default)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<User?> GetByLogin(Login login, CancellationToken ct = default)
     {
         throw new NotImplementedException();
     }

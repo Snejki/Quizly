@@ -1,13 +1,20 @@
 import { isAxiosError } from "axios";
 import { FieldValues, UseFormSetError } from "react-hook-form";
 
+const apiErrorResponseCodes = [
+  "QuizlyException",
+  "ValidationException",
+  "unexpected_error",
+] as const;
+type CodeTuple = typeof apiErrorResponseCodes;
+
 type BadRequestErrorResponse = {
-  code: "QuizlyException";
+  code: CodeTuple[0];
   message: string;
 };
 
 type ValidationErrorResponse = {
-  code: "ValidationException";
+  code: CodeTuple[1];
   message: string;
   errors: {
     errorMessage: string;
@@ -16,7 +23,7 @@ type ValidationErrorResponse = {
 };
 
 type InternalServerErrorResponse = {
-  code: "unexpected_error";
+  code: CodeTuple[2];
   message: string;
 };
 
@@ -28,12 +35,11 @@ export type ErrorResponse =
 export const isValidationError = (
   error: ErrorResponse
 ): error is ValidationErrorResponse => {
-  return error.code == "ValidationException";
+  return error && error.code && error.code == apiErrorResponseCodes[1];
 };
 
 export const isApiErrorResponse = (error: any): error is ErrorResponse => {
-  // TODO: to implement
-  return true;
+  return apiErrorResponseCodes.includes(error);
 };
 
 export function handleValidationErrors<T extends FieldValues>(

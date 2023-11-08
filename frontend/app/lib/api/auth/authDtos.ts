@@ -4,7 +4,7 @@ export interface LoginUserRequestDto {
 }
 
 export interface LoginUserResponseDto {
-  id: string;
+  login: string;
   avatar: string;
   token: string;
 }

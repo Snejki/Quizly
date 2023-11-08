@@ -17,7 +17,7 @@ export const toastSuccess = (
 
 export const toastError = (
   title: React.ReactNode,
-  description: React.ReactNode,
+  description: React.ReactNode = null,
   isClosable = true,
   duration: number | null = null,
   colorScheme: ThemeTypings["colorSchemes"] = "red",

@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 var assemblies = ModulesLoader.LoadAssemblies(builder.Configuration);
 var modules = ModulesLoader.LoadModules(assemblies);
 
-builder.AddModularInfrastructure(assemblies, modules);
+builder.AddModularInfrastructure(builder.Configuration, assemblies, modules);
 var app = builder.Build();
 app.UseModularInfrastructure(assemblies, modules);
 

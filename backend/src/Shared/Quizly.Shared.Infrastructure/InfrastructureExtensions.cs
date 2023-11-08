@@ -1,8 +1,11 @@
 ﻿using System.Reflection;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Quizly.Shared.Abstractions.Auth;
 using Quizly.Shared.Abstractions.Modules;
+using Quizly.Shared.Infrastructure.Auth;
 using Quizly.Shared.Infrastructure.Clock;
 using Quizly.Shared.Infrastructure.Endpoints;
 using Quizly.Shared.Infrastructure.Exceptions;
@@ -15,8 +18,9 @@ namespace Quizly.Shared.Infrastructure;
 
 public static class InfrastructureExtensions
 {
-    public static void AddModularInfrastructure(this WebApplicationBuilder builder, IList<Assembly> assemblies, IList<IModule> modules)
+    public static void AddModularInfrastructure(this WebApplicationBuilder builder, IConfiguration configuration, IList<Assembly> assemblies, IList<IModule> modules)
     {
+        builder.Services.AddCustomAuth(configuration);
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
         builder.Services.AddCustomMediatr(assemblies);
@@ -36,6 +40,8 @@ public static class InfrastructureExtensions
                 });
         });
         builder.Host.AddCustomLogger();
+
+        builder.Services.Configure<JwtOptions>(configuration.GetSection(JwtOptions.Path));
     }
 
     public static void UseModularInfrastructure(this WebApplication app, IList<Assembly> assemblies, IList<IModule> modules)
@@ -50,6 +56,8 @@ public static class InfrastructureExtensions
 
         app.UseCustomExceptionHandling();
         app.UseModules(modules);
+        app.UseAuthentication();
+        app.UseAuthorization();
         app.UseEndpoints(assemblies.ToArray());
         app.UseHttpsRedirection();
     }
