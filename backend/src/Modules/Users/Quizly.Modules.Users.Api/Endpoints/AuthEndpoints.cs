@@ -19,5 +19,7 @@ public class AuthEndpoints : IEndpoint
         });
         
         // TODO: refresh tokens
+        // TODO: mapperly
+        app.MapPost("auth/refresh", async (CancellationToken ct) => Results.Ok());
     }
 }

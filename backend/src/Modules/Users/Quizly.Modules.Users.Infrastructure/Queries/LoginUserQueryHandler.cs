@@ -47,7 +47,7 @@ public class LoginUserQueryHandler : IRequestHandler<LoginUserQuery, LoginUserRe
         
          // TODO: check if is active;
         
-         var token = _tokenService.GenerateToken(user.Id, user.Login);
+         var token = _tokenService.GenerateAccessToken(user.Id, user.Login);
 
         return new LoginUserResponse(token, user.Login.Value, user.Avatar?.Path);
     }

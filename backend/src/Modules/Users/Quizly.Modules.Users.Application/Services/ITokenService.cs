@@ -4,5 +4,5 @@ namespace Quizly.Modules.Users.Application.Services;
 
 public interface ITokenService
 {
-    public string GenerateToken(UserId userId, Login login);
+    public string GenerateAccessToken(UserId userId, Login login);
 }
