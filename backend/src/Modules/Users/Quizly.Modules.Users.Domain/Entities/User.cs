@@ -2,21 +2,25 @@
 
 public class User
 {
-    public UserId Id { get; }
-    public Login Login { get; }
-    public Email Email { get; }
-    public Password Password { get; }
+    public UserId Id { get; private set; }
+    public Login Login { get; private set; }
+    public Email Email { get; private set; }
+    public Password Password { get; private set; }
 
-    public Avatar? Avatar { get; }
+    public Avatar? Avatar { get; private set; }
 
-    public DateTime CreatedAt { get;  }
-    public DateTime? ModifiedAt { get; }
+    public DateTime CreatedAt { get; private set; }
+    public DateTime? ModifiedAt { get; private set; }
 
     //private ICollection<Role> _roles;
     //public IReadOnlyCollection<Role> Roles => _roles;
 
+    // ReSharper disable once UnusedMember.Local
+    private User()
+    {
+    }
 
-    public User(UserId userId, Login login, Email email, Password password, DateTime? createdAt)
+    public User(UserId userId, Login login, Email email, Password password, DateTime? createdAt) : base()
     {
         Id = userId ?? throw new NullReferenceException(nameof(userId));
         Login = login ?? throw new NullReferenceException(nameof(login));

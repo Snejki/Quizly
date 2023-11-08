@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
+using Quizly.Modules.Users.Application.Exceptions;
 using Quizly.Modules.Users.Application.Queries;
 using Quizly.Modules.Users.Application.Services;
 using Quizly.Modules.Users.Domain;
@@ -34,13 +35,13 @@ public class LoginUserQueryHandler : IRequestHandler<LoginUserQuery, LoginUserRe
          var user = await _userRepository.GetByLogin(login, cancellationToken);
          if (user is null)
          {
-             throw new QuizlyException("");
+             throw new UserWithProvidedLoginNotFound();
          }
         
          var isPasswordValid = _passwordService.IsPasswordValid(query.Password, user.Password.Hash);
          if (isPasswordValid is false)
          {
-             throw new QuizlyException("");
+             throw new IncorrectPassword();
          }
         
         

@@ -1,5 +1,7 @@
 ﻿using MediatR;
 using Quizly.Modules.Users.Application.Commands;
+using Quizly.Modules.Users.Application.Exceptions;
+using Quizly.Modules.Users.Application.Services;
 using Quizly.Modules.Users.Domain;
 using Quizly.Modules.Users.Domain.Entities;
 using Quizly.Modules.Users.Domain.Repositories;
@@ -13,35 +15,38 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, U
 {
     private readonly IClock _clock;
     private readonly IUserRepository _userRepository;
+    private readonly IPasswordService _passwordService;
 
-    public RegisterUserCommandHandler(IClock clock, IUserRepository userRepository)
+    public RegisterUserCommandHandler(IClock clock, 
+        IUserRepository userRepository, 
+        IPasswordService passwordService)
     {
         _clock = clock;
         _userRepository = userRepository;
+        _passwordService = passwordService;
     }
 
-    public async Task<Unit> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(RegisterUserCommand command, CancellationToken cancellationToken)
     {
-        var login = new Login(request.Login);
-        var email = new Email(request.Email);
+        var login = new Login(command.Login);
+        var email = new Email(command.Email);
         
         var user = await _userRepository.GetByEmail(email, cancellationToken);
-        if (user is null)
+        if (user is not null)
         {
-            throw new QuizlyException("");
+            throw new UserWithProvidedEmailAlreadyExists(command.Email);
         }
 
         user = await _userRepository.GetByLogin(login, cancellationToken);
-        if (user is null)
+        if (user is not null)
         {
-            throw new QuizlyException("");
+            throw new UserWithProvidedLoginAlreadyExists(command.Login);
         }
 
-        // TODO: Password Hash
-        var passwordHash = new Password(request.Password);
+        var passwordHash = new Password(_passwordService.GeneratePasswordHash(command.Password));
 
         user = new User(new UserId(Guid.NewGuid()), login, email, passwordHash, _clock.Current);
-        await _userRepository.Add(user);
+        await _userRepository.Add(user, cancellationToken);
         
         // TODO: notifications
         

@@ -18,9 +18,6 @@ public class AuthEndpoints : IEndpoint
             return Results.Ok(response);
         });
         
-        // TODO: handle authentication and auth pages on frontend
-        // TODO: add in memory database for now
-        // TODO: mocking database :D:D
         // TODO: refresh tokens
     }
 }
