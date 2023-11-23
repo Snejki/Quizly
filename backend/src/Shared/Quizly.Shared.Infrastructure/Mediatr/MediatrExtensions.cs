@@ -5,7 +5,7 @@ using Quizly.Shared.Infrastructure.Mediatr.PipelineBehaviors;
 
 namespace Quizly.Shared.Infrastructure.Mediatr;
 
-public static class MediatrExtensions
+public static class  MediatrExtensions
 {
     internal static void AddCustomMediatr(this IServiceCollection services, IList<Assembly> assembiles)
     {
@@ -17,5 +17,6 @@ public static class MediatrExtensions
     private static void AddPipelineBehaviors(this IServiceCollection services)
     {
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthValidationBehavior<,>));
     }
 }

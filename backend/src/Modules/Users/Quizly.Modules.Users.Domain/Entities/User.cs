@@ -39,9 +39,9 @@ public class User
         
     }
 
-    public void ChangePassword()
+    public void ChangePassword(Password? newPassword)
     {
-        
+        Password = newPassword ?? throw new NullReferenceException(nameof(Password));
     }
 
     public void ChangeAvatar()

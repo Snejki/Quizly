@@ -31,7 +31,8 @@ public class TokenService : ITokenService
             {
                 new Claim(JwtRegisteredClaimNames.Sub, userId.Value.ToString()),
                 new Claim(JwtRegisteredClaimNames.Name, login.Value),
-                new Claim(JwtRegisteredClaimNames.NameId, userId.Value.ToString())
+                new Claim(JwtRegisteredClaimNames.NameId, userId.Value.ToString()),
+                new Claim(ClaimTypes.Name, userId.Value.ToString())
             }),
             Expires = _clock.Current.AddHours(_jwtOptions.ExpiryTime),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)
