@@ -7,7 +7,6 @@
 
         <IsPackable>false</IsPackable>
         <IsTestProject>true</IsTestProject>
-        <RootNamespace>Quizly.Modules.Users.Tests.Infrastructure</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -25,6 +24,11 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Shared\Quizly.Shared.Tests\Quizly.Shared.Tests.csproj" />
+      <ProjectReference Include="..\Quizly.Modules.Users.Infrastructure\Quizly.Modules.Users.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

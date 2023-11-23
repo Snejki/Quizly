@@ -6,7 +6,6 @@ using Quizly.Modules.Users.Domain;
 using Quizly.Modules.Users.Domain.Entities;
 using Quizly.Modules.Users.Domain.Repositories;
 using Quizly.Shared.Abstractions.Clock;
-using Quizly.Shared.Abstractions.Exceptions;
 
 namespace Quizly.Modules.Users.Infrastructure.Commands;
 

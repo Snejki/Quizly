@@ -31,12 +31,12 @@ public class User
 
     public void ActivateUser()
     {
-        
+        throw new NotSupportedException();
     }
 
     public void DeactivateUser()
     {
-        
+        throw new NotSupportedException();
     }
 
     public void ChangePassword(Password? newPassword)
@@ -46,16 +46,16 @@ public class User
 
     public void ChangeAvatar()
     {
-        
+        throw new NotSupportedException();
     }
 
     public void AddRole()
     {
-        
+        throw new NotSupportedException();
     }
 
     public void RemoveRole()
     {
-        
+        throw new NotSupportedException();
     }
 }

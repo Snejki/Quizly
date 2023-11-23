@@ -3,5 +3,6 @@
 public class Role
 {
     public Guid Id { get; set; }
+
     public string Permission { get; set; }
 }

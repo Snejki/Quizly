@@ -1,0 +1,6 @@
+root = true
+
+# asd
+[*.{cs,vb}]
+dotnet_diagnostic.SA1633.severity = none
+dotnet_diagnostic.SA1200.severity = none

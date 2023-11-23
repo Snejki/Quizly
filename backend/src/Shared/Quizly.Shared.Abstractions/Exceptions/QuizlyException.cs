@@ -2,8 +2,8 @@
 
 public class QuizlyException : Exception
 {
-    public QuizlyException(string message) : base(message)
+    protected QuizlyException(string message)
+        : base(message)
     {
-        
     }
 }

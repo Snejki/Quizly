@@ -11,4 +11,11 @@
       <ProjectReference Include="..\Quizly.Modules.Users.Infrastructure\Quizly.Modules.Users.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="SonarAnalyzer.CSharp" Version="9.12.0.78982">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+
 </Project>
