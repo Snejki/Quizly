@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Quizly.Modules.Users.Application.Commands;
+using Quizly.Modules.Users.Application.Exceptions;
 using Quizly.Modules.Users.Application.Services;
 using Quizly.Modules.Users.Domain;
 using Quizly.Modules.Users.Domain.Repositories;
@@ -23,13 +24,13 @@ public class ChangePasswordCommandHandler: IRequestHandler<ChangePasswordCommand
         var user = await _userRepository.GetById(new UserId(command.UserId), cancellationToken);
         if (user is null)
         {
-            throw new Exception();
+            throw new UnauthorizedAccessException();
         }
 
         var isCurrentPasswordValid = _passwordService.IsPasswordValid(command.CurrentPassword, user.Password.Hash);
         if (isCurrentPasswordValid is false)
         {
-            throw new Exception();
+            throw new IncorrectPassword();
         }
 
         var newPasswordHash = _passwordService.GeneratePasswordHash(command.NewPassword);
