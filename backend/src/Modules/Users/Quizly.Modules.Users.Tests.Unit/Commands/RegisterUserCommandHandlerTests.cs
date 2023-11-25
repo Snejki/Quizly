@@ -1,4 +1,4 @@
-﻿using FluentAssertions;
+using FluentAssertions;
 using NSubstitute;
 using Quizly.Modules.Users.Application.Commands;
 using Quizly.Modules.Users.Application.Exceptions;
