@@ -15,10 +15,10 @@ public static class ModulesLoader
             .ToList();
 
         files.ForEach(x => assemblies.Add(AppDomain.CurrentDomain.Load(AssemblyName.GetAssemblyName(x))));
-        
+
         return assemblies;
     }
-    
+
     public static IList<IModule> LoadModules(IEnumerable<Assembly> assemblies)
         => assemblies
             .SelectMany(x => x.GetTypes())

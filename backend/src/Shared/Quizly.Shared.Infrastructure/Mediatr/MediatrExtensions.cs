@@ -5,12 +5,12 @@ using Quizly.Shared.Infrastructure.Mediatr.PipelineBehaviors;
 
 namespace Quizly.Shared.Infrastructure.Mediatr;
 
-public static class  MediatrExtensions
+public static class MediatrExtensions
 {
     internal static void AddCustomMediatr(this IServiceCollection services, IList<Assembly> assembiles)
     {
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(assembiles.ToArray()));
-        
+
         services.AddPipelineBehaviors();
     }
 

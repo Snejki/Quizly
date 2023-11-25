@@ -28,14 +28,14 @@ internal class ExceptionHandlingMiddleware : IMiddleware
             // TODO: log not every exception
             _logger.LogError("{Exception}", e);
             await HandleException(context, e);
-        }    
+        }
     }
-    
+
     private async Task HandleException(HttpContext context, Exception exception)
     {
         var errorModel = MapException(exception);
-        context.Response.StatusCode = (int) errorModel.StatusCode;
-        var response = errorModel?.Response;
+        context.Response.StatusCode = (int)errorModel.StatusCode;
+        var response = errorModel.Response;
 
         await context.Response.WriteAsJsonAsync(response);
     }
@@ -44,12 +44,11 @@ internal class ExceptionHandlingMiddleware : IMiddleware
     {
         QuizlyException e => new ErrorResponse(new Error(nameof(QuizlyException), e.Message), HttpStatusCode.BadRequest),
         ValidationException e => new ErrorResponse(new ValidationError(nameof(ValidationException), "Some field values are invalid", e.Errors), HttpStatusCode.BadRequest),
-        _ => new ErrorResponse(new Error("unexpected_error", "There was an error"), HttpStatusCode.InternalServerError)
+        _ => new ErrorResponse(new Error("unexpected_error", "There was an error"), HttpStatusCode.InternalServerError),
     };
 }
 
 internal record Error(string Code, string Message);
 internal record ValidationError(string Code, string Message, IEnumerable<ValidationFailure> Errors);
-
 
 internal record ErrorResponse(object Response, HttpStatusCode StatusCode);

@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Quizly.Shared.Infrastructure.Mediatr.PipelineBehaviors;
 
-public class ValidationPipelineBehavior<TQuery, TResult> : IPipelineBehavior<TQuery, TResult> 
+public class ValidationPipelineBehavior<TQuery, TResult> : IPipelineBehavior<TQuery, TResult>
     where TQuery : class, IRequest<TResult>
 {
     private readonly IEnumerable<IValidator<TQuery>> _validators;
@@ -28,7 +28,7 @@ public class ValidationPipelineBehavior<TQuery, TResult> : IPipelineBehavior<TQu
                 throw new ValidationException(validationFailures);
             }
         }
-        
+
         return await next();
     }
 }

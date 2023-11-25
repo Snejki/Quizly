@@ -20,7 +20,7 @@ public static class EndpointsExtensions
             endpointModule.UseEndpoints(app);
         }
     }
-    
+
     private static IList<IEndpoint> LoadEndpoints(IEnumerable<Assembly> assemblies)
         => assemblies
             .SelectMany(x => x.GetTypes())

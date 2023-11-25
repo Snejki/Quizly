@@ -11,15 +11,14 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
     {
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).HasConversion(x => x.Value, x => new UserId(x)).IsRequired();
-        
+
         builder
             .HasIndex(x => x.Login).IsUnique();
         builder.Property(x => x.Login).HasConversion(x => x.Value, x => new Login(x)).IsRequired();
-        
+
         builder
             .HasIndex(x => x.Email).IsUnique();
         builder.Property(x => x.Email).HasConversion(x => x.Value, x => new Email(x)).IsRequired();
-
 
         builder.OwnsOne(x => x.Password);
 

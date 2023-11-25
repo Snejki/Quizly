@@ -8,7 +8,7 @@ using Quizly.Modules.Users.Domain.Repositories;
 namespace Quizly.Modules.Users.Infrastructure.Commands;
 
 // ReSharper disable once UnusedType.Global
-public class ChangePasswordCommandHandler: IRequestHandler<ChangePasswordCommand, Unit>
+public class ChangePasswordCommandHandler : IRequestHandler<ChangePasswordCommand, Unit>
 {
     private readonly IUserRepository _userRepository;
     private readonly IPasswordService _passwordService;
@@ -30,14 +30,14 @@ public class ChangePasswordCommandHandler: IRequestHandler<ChangePasswordCommand
         var isCurrentPasswordValid = _passwordService.IsPasswordValid(command.CurrentPassword, user.Password.Hash);
         if (isCurrentPasswordValid is false)
         {
-            throw new IncorrectPassword();
+            throw new IncorrectPasswordException();
         }
 
         var newPasswordHash = _passwordService.GeneratePasswordHash(command.NewPassword);
         user.ChangePassword(new Password(newPasswordHash));
 
         await _userRepository.Update(user, cancellationToken);
-        
+
         return Unit.Value;
     }
 }

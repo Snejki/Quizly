@@ -31,12 +31,12 @@ public class RegisterUserCommandHandlerTests
         _userRepository.GetByEmail(Arg.Any<Email>()).Returns(User);
 
         // act and assert
-        await Assert.ThrowsAsync<UserWithProvidedEmailAlreadyExists>(async () =>
+        await Assert.ThrowsAsync<UserWithProvidedEmailAlreadyExistsException>(async () =>
         {
             await _sut.Handle(Command, CancellationToken.None);
         });
     }
-    
+
     [Fact]
     public async Task Handle_WhenUserWithProvidedLoginExists_ShouldThrowException()
     {
@@ -44,20 +44,21 @@ public class RegisterUserCommandHandlerTests
         _userRepository.GetByLogin(Arg.Any<Login>()).Returns(User);
 
         // act and assert
-        await Assert.ThrowsAsync<UserWithProvidedLoginAlreadyExists>(async () =>
+        await Assert.ThrowsAsync<UserWithProvidedLoginAlreadyExistsException>(async () =>
         {
             await _sut.Handle(Command, CancellationToken.None);
         });
     }
 
-    private static User User => new (new UserId(Guid.NewGuid()), 
-        new Login("LOGIN"), 
+    private static User User => new (
+        new UserId(Guid.NewGuid()),
+        new Login("LOGIN"),
         new Email("test@mail.com"),
-        new Password("PASSWORD_HASH"), 
+        new Password("PASSWORD_HASH"),
         DateTime.Now);
-    
+
     private static RegisterUserCommand Command => new("test@mail.com", "LOGIN", "PASSWORD", "PASSWORD");
-    
+
     private readonly RegisterUserCommandHandler _sut;
     private readonly IClock _clock = Substitute.For<IClock>();
     private readonly IUserRepository _userRepository = Substitute.For<IUserRepository>();

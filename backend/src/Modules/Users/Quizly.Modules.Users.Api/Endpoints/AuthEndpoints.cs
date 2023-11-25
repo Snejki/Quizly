@@ -18,9 +18,9 @@ public class AuthEndpoints : IEndpoint
             var response = await mediator.Send(dto.ToLoginUserQuery(), ct);
             return Results.Ok(response);
         });
-        
+
         // TODO: refresh tokens
         // TODO: mapperly
-        app.MapPost("auth/refresh", async (CancellationToken ct) => Results.Ok());
+        app.MapPost("auth/refresh", (CancellationToken ct) => Results.Ok());
     }
 }

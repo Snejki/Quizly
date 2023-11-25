@@ -38,9 +38,9 @@ public class UsersDatabaseInitializer : IHostedService
                 var users = new List<User>()
                 {
                     new(new UserId(Guid.NewGuid()), new Login("TOMEK"), new Email("tomek@mail.com"),
-                        new Password(passwordService.GeneratePasswordHash("TOMASZEK")), clock.Current)
+                        new(passwordService.GeneratePasswordHash("TOMASZEK")), clock.Current),
                 };
-                
+
                 dbContext.AddRange(users);
             }
 

@@ -17,8 +17,9 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, U
     private readonly IUserRepository _userRepository;
     private readonly IPasswordService _passwordService;
 
-    public RegisterUserCommandHandler(IClock clock, 
-        IUserRepository userRepository, 
+    public RegisterUserCommandHandler(
+        IClock clock,
+        IUserRepository userRepository,
         IPasswordService passwordService)
     {
         _clock = clock;
@@ -30,26 +31,26 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, U
     {
         var login = new Login(command.Login);
         var email = new Email(command.Email);
-        
+
         var user = await _userRepository.GetByEmail(email, cancellationToken);
         if (user is not null)
         {
-            throw new UserWithProvidedEmailAlreadyExists(command.Email);
+            throw new UserWithProvidedEmailAlreadyExistsException(command.Email);
         }
 
         user = await _userRepository.GetByLogin(login, cancellationToken);
         if (user is not null)
         {
-            throw new UserWithProvidedLoginAlreadyExists(command.Login);
+            throw new UserWithProvidedLoginAlreadyExistsException(command.Login);
         }
 
         var passwordHash = new Password(_passwordService.GeneratePasswordHash(command.Password));
 
         user = new User(new UserId(Guid.NewGuid()), login, email, passwordHash, _clock.Current);
         await _userRepository.Add(user, cancellationToken);
-        
+
         // TODO: notifications
-        
+
         return Unit.Value;
     }
 }

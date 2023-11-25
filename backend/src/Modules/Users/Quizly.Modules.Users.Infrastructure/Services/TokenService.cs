@@ -24,7 +24,7 @@ public class TokenService : ITokenService
     public string GenerateAccessToken(UserId userId, Login login)
     {
         var key = Encoding.UTF8.GetBytes(_jwtOptions.Key);
-        
+
         var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(new[]
@@ -37,11 +37,11 @@ public class TokenService : ITokenService
             Expires = _clock.Current.AddHours(_jwtOptions.ExpiryTime),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)
         };
-        
+
         var tokenHandler = new JwtSecurityTokenHandler();
         var securityToken = tokenHandler.CreateToken(tokenDescriptor);
         var token = tokenHandler.WriteToken(securityToken);
-        
+
         return token;
     }
 }
