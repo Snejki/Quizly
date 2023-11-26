@@ -36,7 +36,7 @@ internal sealed class LoginUserQueryHandler : IRequestHandler<LoginUserQuery, Lo
          }
 
          var isPasswordValid = _passwordService.IsPasswordValid(query.Password, user.Password.Hash);
-         if (isPasswordValid is false)
+         if (!isPasswordValid)
          {
              throw new IncorrectPasswordException();
          }

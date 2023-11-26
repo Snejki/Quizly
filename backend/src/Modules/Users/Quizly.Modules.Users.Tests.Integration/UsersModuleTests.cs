@@ -13,6 +13,8 @@ public abstract class UsersModuleTests : IAsyncLifetime
 
     protected UsersDbContext DbContext { get; private set; }
 
+    protected IServiceProvider ServiceProvider => _testApi.Services;
+
     protected virtual Action<IServiceCollection>? ConfigureServices => null;
 
     public async Task InitializeAsync()

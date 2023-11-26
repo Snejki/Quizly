@@ -25,7 +25,7 @@ public class UsersDatabaseInitializer : IHostedService
             var dbContext = scope.ServiceProvider.GetRequiredService<UsersDbContext>();
             var env = scope.ServiceProvider.GetRequiredService<IWebHostEnvironment>();
 
-            if (env.IsDevelopment() is false)
+            if (!env.IsDevelopment())
             {
                 return;
             }
