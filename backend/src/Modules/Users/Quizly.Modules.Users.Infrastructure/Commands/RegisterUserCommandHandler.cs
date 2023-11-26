@@ -11,7 +11,7 @@ using Quizly.Shared.Abstractions.Exceptions;
 namespace Quizly.Modules.Users.Infrastructure.Commands;
 
 // ReSharper disable once UnusedType.Global
-public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, Unit>
+internal sealed class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, Unit>
 {
     private readonly IClock _clock;
     private readonly IUserRepository _userRepository;

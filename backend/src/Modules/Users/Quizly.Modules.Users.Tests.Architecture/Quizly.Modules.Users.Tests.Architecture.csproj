@@ -23,8 +23,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\Quizly.Api\Quizly.Api.csproj" />
-      <ProjectReference Include="..\..\src\Shared\Quizly.Shared.Tests\Quizly.Shared.Tests.csproj" />
+      <ProjectReference Include="..\..\..\Shared\Quizly.Shared.Tests\Quizly.Shared.Tests.csproj" />
+      <ProjectReference Include="..\Quizly.Modules.Users.Infrastructure\Quizly.Modules.Users.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

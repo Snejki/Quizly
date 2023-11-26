@@ -1,17 +1,15 @@
 ﻿using MediatR;
-using Microsoft.Extensions.Logging;
 using Quizly.Modules.Users.Application.Exceptions;
 using Quizly.Modules.Users.Application.Queries;
 using Quizly.Modules.Users.Application.Services;
 using Quizly.Modules.Users.Domain;
 using Quizly.Modules.Users.Domain.Repositories;
 using Quizly.Modules.Users.Infrastructure.Mappers;
-using Quizly.Shared.Abstractions.Exceptions;
 
 namespace Quizly.Modules.Users.Infrastructure.Queries;
 
 // ReSharper disable once UnusedType.Global
-public class LoginUserQueryHandler : IRequestHandler<LoginUserQuery, LoginUserResponse>
+internal sealed class LoginUserQueryHandler : IRequestHandler<LoginUserQuery, LoginUserResponse>
 {
     private readonly IUserRepository _userRepository;
     private readonly ITokenService _tokenService;

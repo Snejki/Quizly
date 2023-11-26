@@ -8,7 +8,7 @@ using Quizly.Modules.Users.Domain.Repositories;
 namespace Quizly.Modules.Users.Infrastructure.Commands;
 
 // ReSharper disable once UnusedType.Global
-public class ChangePasswordCommandHandler : IRequestHandler<ChangePasswordCommand, Unit>
+internal sealed class ChangePasswordCommandHandler : IRequestHandler<ChangePasswordCommand, Unit>
 {
     private readonly IUserRepository _userRepository;
     private readonly IPasswordService _passwordService;
