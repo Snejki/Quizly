@@ -46,7 +46,7 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, U
 
         var passwordHash = new Password(_passwordService.GeneratePasswordHash(command.Password));
 
-        user = new User(new UserId(Guid.NewGuid()), login, email, passwordHash, _clock.Current);
+        user = User.CreateWithEmailAndPassword(new UserId(Guid.NewGuid()), login, email, passwordHash, _clock.Current);
         await _userRepository.Add(user, cancellationToken);
 
         // TODO: notifications

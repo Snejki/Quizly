@@ -50,7 +50,7 @@ public class RegisterUserCommandHandlerTests
         });
     }
 
-    private static User User => new (
+    private static User User => User.CreateWithEmailAndPassword(
         new UserId(Guid.NewGuid()),
         new Login("LOGIN"),
         new Email("test@mail.com"),

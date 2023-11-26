@@ -16,14 +16,16 @@ public class User
 
     public DateTime? ModifiedAt { get; private set; }
 
-    public User(UserId userId, Login login, Email email, Password password, DateTime? createdAt)
-        : base()
+    public static User CreateWithEmailAndPassword(UserId userId, Login login, Email email, Password password, DateTime? createdAt)
     {
-        Id = userId ?? throw new NullReferenceException(nameof(userId));
-        Login = login ?? throw new NullReferenceException(nameof(login));
-        Email = email ?? throw new NullReferenceException(nameof(email));
-        Password = password ?? throw new NullReferenceException(nameof(password));
-        CreatedAt = createdAt ?? throw new NullReferenceException(nameof(createdAt));
+        return new()
+        {
+            Id = userId ?? throw new NullReferenceException(nameof(userId)),
+            Login = login ?? throw new NullReferenceException(nameof(login)),
+            Email = email ?? throw new NullReferenceException(nameof(email)),
+            Password = password ?? throw new NullReferenceException(nameof(password)),
+            CreatedAt = createdAt ?? throw new NullReferenceException(nameof(createdAt)),
+        };
     }
 
     // ReSharper disable once UnusedMember.Local
