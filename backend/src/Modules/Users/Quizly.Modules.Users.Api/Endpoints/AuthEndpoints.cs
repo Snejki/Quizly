@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
 using Quizly.Modules.Users.Application.Dtos;
+using Quizly.Modules.Users.Application.Queries;
 using Quizly.Modules.Users.Infrastructure.Mappers;
 using Quizly.Shared.Abstractions.Endpoints;
 
@@ -19,8 +20,12 @@ public class AuthEndpoints : IEndpoint
             return Results.Ok(response);
         });
 
-        // TODO: refresh tokens
-        // TODO: mapperly
-        app.MapPost("auth/refresh", (CancellationToken ct) => Results.Ok());
+        app.MapPost("auth/refresh", async (RefreshTokenRequestDto dto, IMediator mediator, CancellationToken ct) =>
+        {
+            var query = new RefreshUserAccessTokenQuery(dto.RefreshToken, dto.AccessToken);
+            var result = await mediator.Send(query, ct);
+
+            return Results.Ok(result);
+        });
     }
 }

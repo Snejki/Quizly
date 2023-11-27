@@ -7,6 +7,7 @@ using Quizly.Modules.Users.Domain;
 using Quizly.Modules.Users.Domain.Entities;
 using Quizly.Modules.Users.Domain.Repositories;
 using Quizly.Modules.Users.Infrastructure.Commands;
+using Quizly.Modules.Users.Tests.Shared.Builders;
 using Quizly.Shared.Abstractions.Clock;
 
 namespace Quizly.Modules.Users.Tests.Unit.Commands;
@@ -50,12 +51,7 @@ public class RegisterUserCommandHandlerTests
         });
     }
 
-    private static User User => User.CreateWithEmailAndPassword(
-        new UserId(Guid.NewGuid()),
-        new Login("LOGIN"),
-        new Email("test@mail.com"),
-        new Password("PASSWORD_HASH"),
-        DateTime.Now);
+    private static User User => new UserBuilder().Build();
 
     private static RegisterUserCommand Command => new("test@mail.com", "LOGIN", "PASSWORD", "PASSWORD");
 

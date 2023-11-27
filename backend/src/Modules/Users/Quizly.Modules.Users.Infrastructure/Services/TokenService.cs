@@ -32,10 +32,10 @@ public class TokenService : ITokenService
                 new Claim(JwtRegisteredClaimNames.Sub, userId.Value.ToString()),
                 new Claim(JwtRegisteredClaimNames.Name, login.Value),
                 new Claim(JwtRegisteredClaimNames.NameId, userId.Value.ToString()),
-                new Claim(ClaimTypes.Name, userId.Value.ToString())
+                new Claim(ClaimTypes.Name, userId.Value.ToString()),
             }),
             Expires = _clock.Current.AddHours(_jwtOptions.ExpiryTime),
-            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256)
+            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256),
         };
 
         var tokenHandler = new JwtSecurityTokenHandler();
@@ -43,5 +43,32 @@ public class TokenService : ITokenService
         var token = tokenHandler.WriteToken(securityToken);
 
         return token;
+    }
+
+    public ClaimsPrincipal? GetClaimsFromAccessToken(string accessToken)
+    {
+        var key = Encoding.UTF8.GetBytes(_jwtOptions!.Key);
+
+        var tokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            //ValidateAudience = true,
+            //ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            //ValidIssuer = tokenOptions.Issuer,
+            //ValidAudience = tokenOptions.Audience,
+            IssuerSigningKey = new SymmetricSecurityKey(key),
+        };
+
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var principal = tokenHandler.ValidateToken(accessToken, tokenValidationParameters, out SecurityToken securityToken);
+        if (securityToken is not JwtSecurityToken jwtSecurityToken ||
+            !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+        {
+            return null;
+        }
+
+        return principal;
     }
 }

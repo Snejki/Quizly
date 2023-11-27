@@ -3,8 +3,10 @@ using Quizly.Modules.Users.Application.Exceptions;
 using Quizly.Modules.Users.Application.Queries;
 using Quizly.Modules.Users.Application.Services;
 using Quizly.Modules.Users.Domain;
+using Quizly.Modules.Users.Domain.Entities;
 using Quizly.Modules.Users.Domain.Repositories;
 using Quizly.Modules.Users.Infrastructure.Mappers;
+using Quizly.Shared.Abstractions.Clock;
 
 namespace Quizly.Modules.Users.Infrastructure.Queries;
 
@@ -14,15 +16,18 @@ internal sealed class LoginUserQueryHandler : IRequestHandler<LoginUserQuery, Lo
     private readonly IUserRepository _userRepository;
     private readonly ITokenService _tokenService;
     private readonly IPasswordService _passwordService;
+    private readonly IClock _clock;
 
     public LoginUserQueryHandler(
         IUserRepository userRepository,
         ITokenService tokenService,
-        IPasswordService passwordService)
+        IPasswordService passwordService,
+        IClock clock)
     {
         _userRepository = userRepository;
         _tokenService = tokenService;
         _passwordService = passwordService;
+        _clock = clock;
     }
 
     public async Task<LoginUserResponse> Handle(LoginUserQuery query, CancellationToken cancellationToken)
@@ -41,11 +46,17 @@ internal sealed class LoginUserQueryHandler : IRequestHandler<LoginUserQuery, Lo
              throw new IncorrectPasswordException();
          }
 
-         // TODO return access token and refresh token and save refresh to database :P
-         // TODO: check if is active;
-
          var accessToken = _tokenService.GenerateAccessToken(user.Id, user.Login);
+         var refreshToken = PrepareRefreshToken(user.Id);
 
-         return user.ToLoginUserResponse(accessToken);
+         user.AddRefreshToken(refreshToken);
+         await _userRepository.Update(user, cancellationToken);
+
+         return user.ToLoginUserResponse(accessToken, refreshToken.Token);
+    }
+
+    private RefreshToken PrepareRefreshToken(UserId userId)
+    {
+        return RefreshToken.Create(Guid.NewGuid(), userId, Guid.NewGuid().ToString("N"), _clock.Current.AddMonths(2));
     }
 }

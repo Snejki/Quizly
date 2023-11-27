@@ -24,8 +24,10 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Shared\Quizly.Shared.Tests\Quizly.Shared.Tests.csproj" />
+      <ProjectReference Include="..\Quizly.Modules.Users.Api\Quizly.Modules.Users.Api.csproj" />
+      <ProjectReference Include="..\Quizly.Modules.Users.Application\Quizly.Modules.Users.Application.csproj" />
+      <ProjectReference Include="..\Quizly.Modules.Users.Domain\Quizly.Modules.Users.Domain.csproj" />
       <ProjectReference Include="..\Quizly.Modules.Users.Infrastructure\Quizly.Modules.Users.Infrastructure.csproj" />
-      <ProjectReference Include="..\Quizly.Modules.Users.Tests.Shared\Quizly.Modules.Users.Tests.Shared.csproj" />
     </ItemGroup>
 
 </Project>

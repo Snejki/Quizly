@@ -7,6 +7,8 @@ using Quizly.Modules.Users.Domain;
 using Quizly.Modules.Users.Domain.Entities;
 using Quizly.Modules.Users.Domain.Repositories;
 using Quizly.Modules.Users.Infrastructure.Queries;
+using Quizly.Modules.Users.Tests.Shared.Builders;
+using Quizly.Shared.Abstractions.Clock;
 using Serilog;
 
 namespace Quizly.Modules.Users.Tests.Unit.Queries;
@@ -17,10 +19,11 @@ public sealed class LoginUserQueryHandlerTests
     private readonly IUserRepository _userRepository = Substitute.For<IUserRepository>();
     private readonly ITokenService _tokenService = Substitute.For<ITokenService>();
     private readonly IPasswordService _passwordService = Substitute.For<IPasswordService>();
+    private readonly IClock _clock = Substitute.For<IClock>();
 
     public LoginUserQueryHandlerTests()
     {
-        _sut = new LoginUserQueryHandler(_userRepository, _tokenService, _passwordService);
+        _sut = new LoginUserQueryHandler(_userRepository, _tokenService, _passwordService, _clock);
     }
 
     [Fact]
@@ -36,7 +39,8 @@ public sealed class LoginUserQueryHandlerTests
 
         // assert
         result.Login.Should().Be(Query.Login);
-        result.Token.Should().Be("TOKEN");
+        result.AccessToken.Should().Be("TOKEN");
+        result.RefreshToken.Should().NotBeNullOrWhiteSpace();
     }
 
     [Fact]
@@ -70,10 +74,5 @@ public sealed class LoginUserQueryHandlerTests
         Password = "PASSWORD_HASH",
     };
 
-    private static User User => User.CreateWithEmailAndPassword(
-        new UserId(Guid.NewGuid()),
-        new Login("LOGIN"),
-        new Email("test@mail.com"),
-        new Password("PASSWORD_HASH"),
-        DateTime.Now);
+    private static User User => new UserBuilder().Build();
 }

@@ -24,5 +24,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 
         builder.OwnsOne(x => x.Avatar);
         builder.Property(x => x.CreatedAt).IsRequired();
+
+        builder.HasMany<RefreshToken>().WithOne().HasForeignKey(x => x.Userid);
     }
 }

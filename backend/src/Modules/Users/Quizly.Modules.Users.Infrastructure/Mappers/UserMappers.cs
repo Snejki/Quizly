@@ -8,9 +8,9 @@ namespace Quizly.Modules.Users.Infrastructure.Mappers;
 
 internal static class UserToLoginUserResponseMapper
 {
-    public static LoginUserResponse ToLoginUserResponse(this User user, string accessToken)
+    public static LoginUserResponse ToLoginUserResponse(this User user, string accessToken, string refreshToken)
     {
-        return new LoginUserResponse(accessToken, user.Login.Value, user.Avatar?.Path);
+        return new LoginUserResponse(accessToken, refreshToken, user.Login.Value, user.Avatar?.Path);
     }
 }
 

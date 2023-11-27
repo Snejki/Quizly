@@ -8,4 +8,4 @@ public class LoginUserQuery : IRequest<LoginUserResponse>
     public string Password { get; set; }
 }
 
-public record LoginUserResponse(string Token, string Login, string? AvatarPath);
+public record LoginUserResponse(string AccessToken, string RefreshToken, string Login, string? AvatarPath);

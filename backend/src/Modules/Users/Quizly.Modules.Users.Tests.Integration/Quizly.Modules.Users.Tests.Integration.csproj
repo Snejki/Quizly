@@ -30,6 +30,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\..\Quizly.Api\Quizly.Api.csproj" />
       <ProjectReference Include="..\..\..\Shared\Quizly.Shared.Tests\Quizly.Shared.Tests.csproj" />
+      <ProjectReference Include="..\Quizly.Modules.Users.Tests.Shared\Quizly.Modules.Users.Tests.Shared.csproj" />
     </ItemGroup>
 
 </Project>

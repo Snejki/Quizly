@@ -16,13 +16,13 @@ internal class UserRepository : IUserRepository
     }
 
     public async Task<User?> GetById(UserId userId, CancellationToken ct = default) =>
-        await _usersDbContext.Users.SingleOrDefaultAsync(x => x.Id == userId, ct);
+        await _usersDbContext.Users.Include(x => x.RefreshTokens).SingleOrDefaultAsync(x => x.Id == userId, ct);
 
     public async Task<User?> GetByEmail(Email email, CancellationToken ct = default) =>
-        await _usersDbContext.Users.SingleOrDefaultAsync(x => x.Email == email, ct);
+        await _usersDbContext.Users.Include(x => x.RefreshTokens).SingleOrDefaultAsync(x => x.Email == email, ct);
 
     public async Task<User?> GetByLogin(Login login, CancellationToken ct = default) =>
-        await _usersDbContext.Users.SingleOrDefaultAsync(x => x.Login == login, ct);
+        await _usersDbContext.Users.Include(x => x.RefreshTokens).SingleOrDefaultAsync(x => x.Login == login, ct);
 
     public async Task Add(User user, CancellationToken ct = default)
     {
