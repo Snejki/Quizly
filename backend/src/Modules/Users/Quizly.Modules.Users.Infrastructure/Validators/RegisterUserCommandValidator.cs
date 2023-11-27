@@ -4,7 +4,7 @@ using Quizly.Modules.Users.Application.Commands;
 namespace Quizly.Modules.Users.Infrastructure.Validators;
 
 // ReSharper disable once UnusedType.Global
-public class RegisterUserCommandValidator : AbstractValidator<RegisterUserCommand>
+public sealed class RegisterUserCommandValidator : AbstractValidator<RegisterUserCommand>
 {
     public RegisterUserCommandValidator()
     {

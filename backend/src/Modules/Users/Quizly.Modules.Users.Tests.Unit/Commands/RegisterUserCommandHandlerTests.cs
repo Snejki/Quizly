@@ -1,4 +1,4 @@
-﻿using FluentAssertions;
+using FluentAssertions;
 using NSubstitute;
 using Quizly.Modules.Users.Application.Commands;
 using Quizly.Modules.Users.Application.Exceptions;
@@ -31,7 +31,7 @@ public class RegisterUserCommandHandlerTests
         _userRepository.GetByEmail(Arg.Any<Email>()).Returns(User);
 
         // act and assert
-        await Assert.ThrowsAsync<UserWithProvidedEmailAlreadyExists>(async () =>
+        await Assert.ThrowsAsync<UserWithProvidedEmailAlreadyExistsException>(async () =>
         {
             await _sut.Handle(Command, CancellationToken.None);
         });
@@ -44,13 +44,13 @@ public class RegisterUserCommandHandlerTests
         _userRepository.GetByLogin(Arg.Any<Login>()).Returns(User);
 
         // act and assert
-        await Assert.ThrowsAsync<UserWithProvidedLoginAlreadyExists>(async () =>
+        await Assert.ThrowsAsync<UserWithProvidedLoginAlreadyExistsException>(async () =>
         {
             await _sut.Handle(Command, CancellationToken.None);
         });
     }
 
-    private static User User => new(
+    private static User User => User.CreateWithEmailAndPassword(
         new UserId(Guid.NewGuid()),
         new Login("LOGIN"),
         new Email("test@mail.com"),

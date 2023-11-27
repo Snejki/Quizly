@@ -21,9 +21,8 @@ public static class UsersInfrastructure
 
         services.AddHostedService<UsersDatabaseInitializer>();
     }
-    
+
     public static void UseUsersInfrastructure(this WebApplication app)
     {
-        
     }
 }

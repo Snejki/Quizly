@@ -13,6 +13,7 @@ internal static class AuthExtensions
     {
         var tokenOptions = configuration.GetSection(JwtOptions.Path).Get<JwtOptions>();
         var key = Encoding.UTF8.GetBytes(tokenOptions!.Key);
+
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
@@ -28,6 +29,7 @@ internal static class AuthExtensions
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                 };
             });
+
         services.AddAuthorization();
     }
 }

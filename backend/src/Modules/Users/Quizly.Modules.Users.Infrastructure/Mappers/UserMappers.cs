@@ -22,11 +22,10 @@ public static partial class LoginUserRequestDtoToLoginUserQueryMapper
         var mapped = request.ToLoginUserQueryInternal();
         return mapped;
     }
-    
+
     // TODO Add generic Map for requests dto to queries/handlers :D
     private static partial LoginUserQuery ToLoginUserQueryInternal(this LoginUserRequestDto request);
 }
-
 
 [Mapper]
 public static partial class ChangePasswordMapper

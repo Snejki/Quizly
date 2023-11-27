@@ -2,7 +2,6 @@
 
 namespace Quizly.Modules.Users.Application.Queries;
 
-
 public class LoginUserQuery : IRequest<LoginUserResponse>
 {
     public string Login { get; set; }

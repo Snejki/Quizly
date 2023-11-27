@@ -30,7 +30,8 @@ public static class InfrastructureExtensions
         builder.Services.AddCustomValidation(assemblies);
         builder.Services.AddCors(options =>
         {
-            options.AddPolicy("AllowAll",
+            options.AddPolicy(
+                "AllowAll",
                 builder =>
                 {
                     builder

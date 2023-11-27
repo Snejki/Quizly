@@ -18,13 +18,9 @@ public class AuthEndpoints : IEndpoint
             var response = await mediator.Send(dto.ToLoginUserQuery(), ct);
             return Results.Ok(response);
         });
-        
+
         // TODO: refresh tokens
         // TODO: mapperly
-        // TODO:
-        // https://steven-giesel.com/blogPost/f3f46814-06c9-41b7-84fa-09ebb3305ed0
-        // directory build props for sonaranalyzer.scharp
-        // https://medium.com/@michaelparkerdev/linting-c-in-2019-stylecop-sonar-resharper-and-roslyn-73e88af57ebd
-        app.MapPost("auth/refresh", async (CancellationToken ct) => Results.Ok());
+        app.MapPost("auth/refresh", (CancellationToken ct) => Results.Ok());
     }
 }

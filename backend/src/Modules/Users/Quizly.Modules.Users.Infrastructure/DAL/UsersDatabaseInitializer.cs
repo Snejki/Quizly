@@ -25,7 +25,7 @@ public class UsersDatabaseInitializer : IHostedService
             var dbContext = scope.ServiceProvider.GetRequiredService<UsersDbContext>();
             var env = scope.ServiceProvider.GetRequiredService<IWebHostEnvironment>();
 
-            if (env.IsDevelopment() is false)
+            if (!env.IsDevelopment())
             {
                 return;
             }
@@ -37,10 +37,10 @@ public class UsersDatabaseInitializer : IHostedService
 
                 var users = new List<User>()
                 {
-                    new(new UserId(Guid.NewGuid()), new Login("TOMEK"), new Email("tomek@mail.com"),
-                        new Password(passwordService.GeneratePasswordHash("TOMASZEK")), clock.Current)
+                    User.CreateWithEmailAndPassword(new UserId(Guid.NewGuid()), new Login("TOMEK"), new Email("tomek@mail.com"),
+                        new(passwordService.GeneratePasswordHash("TOMASZEK")), clock.Current),
                 };
-                
+
                 dbContext.AddRange(users);
             }
 

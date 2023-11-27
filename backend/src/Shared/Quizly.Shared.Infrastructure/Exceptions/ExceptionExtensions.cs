@@ -7,7 +7,7 @@ internal static class ExceptionExtensions
 {
     public static IServiceCollection AddCustomExceptionHandling(this IServiceCollection services) =>
         services.AddScoped<ExceptionHandlingMiddleware>();
-    
+
     public static IApplicationBuilder UseCustomExceptionHandling(this IApplicationBuilder app) =>
         app.UseMiddleware<ExceptionHandlingMiddleware>();
 }

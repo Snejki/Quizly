@@ -11,6 +11,10 @@
       <ProjectReference Include="..\Modules\Users\Quizly.Modules.Users.Api\Quizly.Modules.Users.Api.csproj" />
       <ProjectReference Include="..\Shared\Quizly.Shared.Infrastructure\Quizly.Shared.Infrastructure.csproj" />
     </ItemGroup>
+    
+    <ItemGroup>
+        <InternalsVisibleTo Include="Quizly.Modules.Users.Tests.Integration" />
+    </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="SonarAnalyzer.CSharp" Version="9.12.0.78982">
