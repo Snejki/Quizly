@@ -1,10 +1,7 @@
 import type { StorybookConfig } from "@storybook/nextjs";
 
 const config: StorybookConfig = {
-  stories: [
-    "../**/*.mdx",
-    "../**/*.stories.@(js|jsx|mjs|ts|tsx)",
-  ],
+  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
     '@chakra-ui/storybook-addon',
     "@storybook/addon-links",

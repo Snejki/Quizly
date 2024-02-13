@@ -1,6 +1,6 @@
-import { handleValidationErrors } from "@/app/lib/api/apiException";
-import { loginUser } from "@/app/lib/api/auth/authActions";
-import { InputFieldControlled } from "@/lib/forms/fields";
+import { InputFieldControlled } from "@/components/fields";
+import { handleValidationErrors } from "@/shared/api/apiException";
+import { loginUser } from "@/shared/api/auth/authActions";
 import { Button, Container, FormControl } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";

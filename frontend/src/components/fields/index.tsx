@@ -1,6 +1,6 @@
-import withControlledField from "../withControlledField";
+import withControlledField from "./withControlledField";
 import InputField from "./InputField";
-import SelectField from "./selectField";
+import SelectField from "./SelectField";
 
 export const InputFieldControlled = withControlledField((props) => (
   <InputField {...props} />

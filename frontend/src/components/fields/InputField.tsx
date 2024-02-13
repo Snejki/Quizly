@@ -1,6 +1,6 @@
 import { Input } from "@chakra-ui/react";
 import React from "react";
-import { WrappedComponentProps } from "../withControlledField";
+import { WrappedComponentProps } from "./withControlledField";
 
 const InputField = ({ error, ...other }: WrappedComponentProps) => {
   return (

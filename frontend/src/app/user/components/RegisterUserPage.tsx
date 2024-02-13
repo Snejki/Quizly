@@ -1,7 +1,7 @@
-import { handleValidationErrors } from "@/app/lib/api/apiException";
-import { createUser } from "@/app/lib/api/user/usersRepository";
-import { toastSuccess } from "@/app/lib/toast/toast";
-import { InputFieldControlled } from "@/lib/forms/fields";
+import { InputFieldControlled } from "@/components/fields";
+import { handleValidationErrors } from "@/shared/api/apiException";
+import { createUser } from "@/shared/api/user/userRepository";
+import { toastSuccess } from "@/shared/toast/toast";
 import { Button, Container, FormControl } from "@chakra-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";

@@ -1,6 +1,5 @@
 import type { Preview } from "@storybook/react";
-const theme = require('../app/theme');
-
+const theme = require('../src/app/theme');
 
 const preview: Preview = {
   parameters: {
