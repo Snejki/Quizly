@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import PrimaryButton from './PrimaryButton';
+import Button from './Button';
 
 const meta = {
   title: 'shared/ui/button',
-  component: PrimaryButton,
+  component: Button,
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
   },
-} satisfies Meta<typeof PrimaryButton>;
+} satisfies Meta<typeof Button>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
