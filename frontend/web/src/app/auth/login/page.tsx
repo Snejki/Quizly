@@ -1,12 +1,13 @@
 "use client";
 
+import React from "react";
 import { TextFieldControlled } from "@/shared/form";
 import Button from "@/shared/ui/buttons/Button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Container } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import type { InferGetServerSidePropsType } from "next";
-import { getCsrfToken, signIn } from "next-auth/react";
+import { getCsrfToken, signIn, useSession } from "next-auth/react";
 import { FormProvider, useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -16,13 +17,14 @@ export default function Page({ csrfToken }: InferGetServerSidePropsType<any>) {
     resolver: zodResolver(validationSchema),
   });
 
+  const session = useSession();
+
   const onSubmit = async (f: LoginUserForm) => {
-    console.log(form.formState.errors)
-    // await signIn("credentials", {
-    //   username: f.login,
-    //   password: f.password,
-    //   redirect: true,
-    // });
+    await signIn("credentials", {
+      username: f.login,
+      password: f.password,
+      redirect: true,
+    });
   };
 
   return (

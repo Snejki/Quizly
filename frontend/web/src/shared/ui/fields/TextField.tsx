@@ -14,7 +14,6 @@ interface TextFieldProps {
 
 const TextField = (props: TextFieldProps) => {
   const { children, id, label, onChange, onBlur, value, name, error } = props;
-  console.log(error);
   return (
     <MuiTextField
       id={id}

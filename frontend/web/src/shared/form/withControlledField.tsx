@@ -35,7 +35,6 @@ export default function withControlledField(
         shouldUnregister
         defaultValue={""}
         render={({ field: { onChange, onBlur, value }, fieldState }) => {
-          console.log(fieldState)
           return (
             <WrappedComponent
               onChange={onChange}
