@@ -3,14 +3,15 @@ import React from "react";
 
 interface PrimaryButtonProps {
   children: any;
-  onClick: any;
+  onClick?: any;
   disabled?: boolean;
+  variant?: string
 }
 
 const PrimaryButton = (props: PrimaryButtonProps) => {
   const { children, onClick, disabled } = props;
   return (
-    <MuiButton style={{ width: "100%" }} onClick={onClick} disabled={disabled}>
+    <MuiButton onClick={onClick} disabled={disabled} variant="contained">
       {children}
     </MuiButton>
   );

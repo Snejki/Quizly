@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { SessionProvider } from "next-auth/react";
+import NavBar from "@/shared/ui/navbar/NavBar";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
@@ -16,6 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <SessionProvider>
+          <NavBar />
           <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
         </SessionProvider>
       </body>
