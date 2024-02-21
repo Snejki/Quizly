@@ -14,7 +14,7 @@ public class UserEndpoints : IEndpoint
 {
     public void UseEndpoints(IEndpointRouteBuilder app)
     {
-        var group = app.MapGroup("user");
+        var group = app.MapGroup("api/user");
 
         group.MapPost("register", async (RegisterUserCommand command, IMediator mediator, CancellationToken ct) =>
         {

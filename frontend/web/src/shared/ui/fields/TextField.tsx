@@ -1,7 +1,7 @@
 import MuiTextField from "@mui/material/TextField";
 import React from "react";
 
-interface TextFieldProps {
+export interface TextFieldProps {
   children: any;
   id: string;
   label: string;
