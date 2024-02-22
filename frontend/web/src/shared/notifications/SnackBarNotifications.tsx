@@ -26,7 +26,6 @@ const SnackbarNotificationProvider = (props: Props) => {
     text: string;
     severity: AlertColor;
   }>();
-  console.log(show);
   const displaySuccessNotification = (messageText: string) => {
     setMessage({ text: messageText, severity: "success" });
     setShow(true);

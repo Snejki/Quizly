@@ -27,7 +27,6 @@ const Page = () => {
 
 
   const registerUser = async (formData: RegisterUserForm) => {
-    displaySuccessNotification('ale jajca ty')
     try {
       await registerUserMutation.mutate(formData);
     } catch (e) {

@@ -14,13 +14,13 @@ public class AuthEndpoints : IEndpoint
 {
     public void UseEndpoints(IEndpointRouteBuilder app)
     {
-        app.MapPost("auth/login", async (LoginUserRequestDto dto, IMediator mediator, CancellationToken ct) =>
+        app.MapPost("api/auth/login", async (LoginUserRequestDto dto, IMediator mediator, CancellationToken ct) =>
         {
             var response = await mediator.Send(dto.ToLoginUserQuery(), ct);
             return Results.Ok(response);
         });
 
-        app.MapPost("auth/refresh", async (RefreshTokenRequestDto dto, IMediator mediator, CancellationToken ct) =>
+        app.MapPost("api/auth/refresh", async (RefreshTokenRequestDto dto, IMediator mediator, CancellationToken ct) =>
         {
             var query = new RefreshUserAccessTokenQuery(dto.RefreshToken, dto.AccessToken);
             var result = await mediator.Send(query, ct);

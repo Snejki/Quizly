@@ -10,7 +10,7 @@ internal static class UserToLoginUserResponseMapper
 {
     public static LoginUserResponse ToLoginUserResponse(this User user, string accessToken, string refreshToken)
     {
-        return new LoginUserResponse(accessToken, refreshToken, user.Login.Value, user.Avatar?.Path);
+        return new LoginUserResponse(user.Id.Value, accessToken, refreshToken, user.Login.Value, user.Avatar?.Path);
     }
 }
 

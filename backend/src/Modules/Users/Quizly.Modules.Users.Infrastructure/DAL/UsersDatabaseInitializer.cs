@@ -37,7 +37,7 @@ public class UsersDatabaseInitializer : IHostedService
 
                 var users = new List<User>()
                 {
-                    User.CreateWithEmailAndPassword(new UserId(Guid.NewGuid()), new Login("TOMEK"), new Email("tomek@mail.com"),
+                    User.CreateWithEmailAndPassword(new UserId(Guid.NewGuid()), new Login("TOMASZEK"), new Email("tomek@mail.com"),
                         new(passwordService.GeneratePasswordHash("TOMASZEK")), clock.Current),
                 };
 
