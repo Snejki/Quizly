@@ -1,5 +1,5 @@
 import { loginUserService } from "@/lib/auth/authService";
-import NextAuth from "next-auth";
+import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 const credentialsProvider = CredentialsProvider({
@@ -9,28 +9,45 @@ const credentialsProvider = CredentialsProvider({
     password: { label: "Password", type: "password" },
   },
   async authorize(credentials, req) {
-    if(credentials == null) {
+    console.log(credentials);
+    if (credentials == null) {
       return null;
     }
 
-    const response = await loginUserService(credentials);
+    try {
+      const response = await loginUserService(credentials);
+      return response;
+    } catch (e) {
+      console.log(e);
+    }
 
-    return { name: "ALBINOS", email: "ALEJAJCA@mail.com", id: "1231231"};
+    return null;
   },
 });
-1
+1;
 const handler = NextAuth({
   providers: [credentialsProvider],
   pages: {
     signIn: "/auth/login",
   },
   callbacks: {
-    async session(params) {
-        console.log(params);
-
-        return params.session;
+    async jwt({ user, token }) {
+      user && (token.user = user);
+      return Promise.resolve(token);
     },
-
+    async session(params) {
+      console.log(params);
+      if(params.trigger == "update") {
+        console.log("from refresh token");
+      }
+      console.log(params);
+      return {
+        user: params.token.user,
+        jwtToken: params.token.accessToken,
+        refreshToken: params.token.refreshToken,
+        expires: params.session.expires
+      };
+    },
   },
 });
 

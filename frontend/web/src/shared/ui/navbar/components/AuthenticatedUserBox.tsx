@@ -10,7 +10,7 @@ const AuthenticatedUser = (props: AuthenticatedUserProps) => {
     <Box sx={{ display: { xs: "none", sm: "block" } }}>
       <Tooltip title="Open settings">
         <IconButton sx={{ p: 0 }}>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+          <Avatar alt="Remy Sharp" />
         </IconButton>
       </Tooltip>
     </Box>

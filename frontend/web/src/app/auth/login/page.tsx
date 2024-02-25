@@ -9,8 +9,6 @@ import { FormProvider, useForm } from "react-hook-form";
 import { z } from "zod";
 import { Stack } from "@mui/material";
 import { signIn, useSession } from "next-auth/react";
-import { DefaultError, useMutation } from "@tanstack/react-query";
-import { LoginUserRequest, LoginUserResponse, loginUserService } from "@/lib/auth/authService";
 
 export default function Page(props: InferGetServerSidePropsType<any>) {
   const { data, status, update} = useSession();
@@ -34,11 +32,6 @@ export default function Page(props: InferGetServerSidePropsType<any>) {
       
     }
   };
-
-  const loginUserMutation = useMutation({
-    mutationFn: async (data: LoginUserRequest) => loginUserService(data),
-    retry: 2,
-  });
 
   return (
     <FormProvider {...form}>

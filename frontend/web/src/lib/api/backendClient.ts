@@ -1,18 +1,23 @@
-import axios from "axios";
-import { getSession, useSession } from "next-auth/react";
+import { getAuthTokens } from "@/shared/auth/useAuthSession";
+import axios, { InternalAxiosRequestConfig } from "axios";
 
 const backendClient = axios.create({
-    baseURL: "http://localhost:5215/",
-    
+  // todo: to environment
+  baseURL: "http://localhost:5215/",
 });
 
 
-backendClient.interceptors.request.use(async (config) => {
-    const session = await getSession();
-    console.log(session);
-    console.log("test")
-    config.headers["Authorization"] = "UR MOMMA";
-    return config;
-})
+const accessTokenInterceptor = async (
+  config: InternalAxiosRequestConfig<any>
+) => {
+  const { jwt } = await getAuthTokens();
+  if(jwt !== undefined) {
+    config.headers["Authorization"] = "Bearer: " + jwt;
+  }
+
+  return config;
+};
+
+backendClient.interceptors.request.use(accessTokenInterceptor);
 
 export { backendClient };

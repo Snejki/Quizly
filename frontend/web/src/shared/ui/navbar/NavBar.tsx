@@ -1,11 +1,13 @@
 import { AppBar, Box, Toolbar, Typography } from "@mui/material";
 import React from "react";
-import useAuthSession from "@/shared/auth/useAuthSession";
 import AuthenticatedUser from "./components/AuthenticatedUserBox";
 import NotAuthenticatedUserBox from "./components/NotAuthenticatedUserBox";
+import { useAuthSession } from "@/shared/auth/useAuthSession";
 
 const NavBar = () => {
-  const { isAuthenticated } = useAuthSession();
+  const { isAuthenticated, user } = useAuthSession();
+  console.log(user);
+
 
   return (
     <Box sx={{ flexGrow: 1 }}>
