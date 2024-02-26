@@ -15,17 +15,22 @@ public sealed class CategoryRepository : ICategoryRepository
         _questionsDbContext = questionsDbContext;
     }
 
-    public async Task<Category?> GetById(CategoryId id, CancellationToken ct)
+    public async Task<List<Category>> GetList(CancellationToken ct = default)
+    {
+        return await _questionsDbContext.Categories.ToListAsync(ct);
+    }
+
+    public async Task<Category?> GetById(CategoryId id, CancellationToken ct = default)
     {
         return await _questionsDbContext.Categories.FirstOrDefaultAsync(x => x.Id == id, ct);
     }
 
-    public async Task<Category?> GetByName(string name, CancellationToken ct)
+    public async Task<Category?> GetByName(string name, CancellationToken ct = default)
     {
         return await _questionsDbContext.Categories.FirstOrDefaultAsync(x => x.Name.Trim() == name.Trim(), ct);
     }
 
-    public async Task Add(Category category, CancellationToken ct)
+    public async Task Add(Category category, CancellationToken ct = default)
     {
         await _questionsDbContext.Categories.AddAsync(category, ct);
         await _questionsDbContext.SaveChangesAsync(ct);
