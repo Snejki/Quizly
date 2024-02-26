@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quizly.Modules.Questions.Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quizly.Modules.Questions.Infrastructure", "src\Modules\Questions\Quizly.Modules.Questions.Infrastructure\Quizly.Modules.Questions.Infrastructure.csproj", "{AA78BF1F-1AE5-4C99-B32E-51F6D4084AD6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quizly.Modules.Questions.Api", "src\Modules\Questions\Quizly.Modules.Questions.Api\Quizly.Modules.Questions.Api.csproj", "{CE01EB3B-6C58-4B65-8CB1-05C605EB2F88}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{AA78BF1F-1AE5-4C99-B32E-51F6D4084AD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA78BF1F-1AE5-4C99-B32E-51F6D4084AD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA78BF1F-1AE5-4C99-B32E-51F6D4084AD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE01EB3B-6C58-4B65-8CB1-05C605EB2F88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE01EB3B-6C58-4B65-8CB1-05C605EB2F88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE01EB3B-6C58-4B65-8CB1-05C605EB2F88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE01EB3B-6C58-4B65-8CB1-05C605EB2F88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -149,6 +155,7 @@ Global
 		{B290E1DD-4472-4A8F-A8CF-3CC69AB45996} = {91B684AD-E7BA-4C5C-BA44-6BB82892613D}
 		{E05D3CBB-E86C-4ACF-AE2E-11B16C8CE24B} = {91B684AD-E7BA-4C5C-BA44-6BB82892613D}
 		{AA78BF1F-1AE5-4C99-B32E-51F6D4084AD6} = {91B684AD-E7BA-4C5C-BA44-6BB82892613D}
+		{CE01EB3B-6C58-4B65-8CB1-05C605EB2F88} = {91B684AD-E7BA-4C5C-BA44-6BB82892613D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {008465E6-9378-4128-B9CE-BBA0FEC6F8AC}
