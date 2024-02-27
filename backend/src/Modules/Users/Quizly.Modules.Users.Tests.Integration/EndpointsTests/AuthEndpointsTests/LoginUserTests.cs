@@ -33,7 +33,7 @@ public sealed class LoginUserTests : UsersModuleTests
         };
 
         // act
-        var response = await Client.PostAsJsonAsync("auth/login", request);
+        var response = await Client.PostAsJsonAsync("api/auth/login", request);
 
         // assert
         response.EnsureSuccessStatusCode();

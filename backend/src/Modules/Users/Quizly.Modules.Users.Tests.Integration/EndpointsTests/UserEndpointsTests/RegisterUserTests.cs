@@ -22,7 +22,7 @@ public sealed class RegisterUserTests : UsersModuleTests
         var requestBody = new RegisterUserCommand(email, login, password, password);
 
         // act
-        var result = await Client.PostAsJsonAsync("user/register", requestBody);
+        var result = await Client.PostAsJsonAsync("api/user/register", requestBody);
 
         // assert
         result.EnsureSuccessStatusCode();

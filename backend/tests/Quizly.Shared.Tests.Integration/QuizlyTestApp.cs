@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Quizly.Modules.Users.Tests.Infrastructure;
+namespace Quizly.Shared.Tests.Integration;
 
 internal class QuizlyTestApp : WebApplicationFactory<Program>
 {

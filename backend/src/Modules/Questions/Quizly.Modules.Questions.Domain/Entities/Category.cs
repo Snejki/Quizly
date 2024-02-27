@@ -8,6 +8,9 @@
         public string ImagePath { get; private set; }
         public bool IsActive { get; private set; }
 
+        public Category()
+        {
+        }
 
         public static Category Creaate(CategoryId id, string name, string description, string imagePath)
         {

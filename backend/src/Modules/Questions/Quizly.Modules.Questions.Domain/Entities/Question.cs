@@ -12,7 +12,8 @@ public class Question
     public bool IsAccepted { get; private set; }
     public bool IsActive { get; private set; }
 
-    public Category Category { get; private set; }
+    public virtual Category Category { get; private set; }
+    public CategoryId CategoryId { get; private set; }
     public IEnumerable<Answer> Answers => _answers;
     private ICollection<Answer> _answers = new List<Answer>();
 }

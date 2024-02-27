@@ -12,7 +12,9 @@ public static class QuestionsInfrastructure
     public static void AddQuestionsInfrastructure(this IServiceCollection services)
     {
         services.AddTransient<ICategoryRepository, CategoryRepository>();
+        services.AddTransient<ICategoryReadonlyRepository, CategoryReadOnlyRepository>();
         services.AddCustomDbContext<QuestionsDbContext>();
+        services.AddHostedService<QuestionsDatabaseInitializer>();
     }
 
     public static void UseQuestionsInfrastructure(this WebApplication app)

@@ -14,7 +14,7 @@
     </ItemGroup>
     
     <ItemGroup>
-        <InternalsVisibleTo Include="Quizly.Modules.Users.Tests.Integration" />
+        <InternalsVisibleTo Include="Quizly.Shared.Tests.Integration" />
     </ItemGroup>
 
     <ItemGroup>
