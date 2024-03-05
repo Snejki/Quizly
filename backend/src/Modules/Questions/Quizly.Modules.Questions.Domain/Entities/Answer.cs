@@ -1,9 +1,14 @@
 ﻿namespace Quizly.Modules.Questions.Domain.Entities;
 
-public class Answer
+public record Answer
 {
-    public AnswerId Id { get; private set; }
-    public QuestionId QuestionId { get; set; }
+    // todo: to value object
     public string Text { get; private set; }
     public bool IsCorrect { get; private set; }
+
+    public Answer(string text, bool isCorrect)
+    {
+        Text = text;
+        IsCorrect = isCorrect;
+    }
 }

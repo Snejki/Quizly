@@ -9,6 +9,7 @@ namespace Quizly.Modules.Questions.Domain;
 public enum QuestionType
 {
     Text,
+    Image,
     Audio,
     Video
 }

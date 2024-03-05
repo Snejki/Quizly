@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Newtonsoft.Json;
 using Quizly.Modules.Questions.Domain.Entities;
 
 namespace Quizly.Modules.Questions.Infrastructure.DAL.Configurations;
@@ -12,7 +13,12 @@ public class QuestionConfiguration : IEntityTypeConfiguration<Question>
         builder.Property(x => x.Id).HasConversion(x => x.Id, x => new (x)).IsRequired();
 
         builder.Property(x => x.Type).IsRequired();
-        builder.HasMany<Answer>().WithOne().HasForeignKey(x => x.QuestionId).IsRequired();
         builder.HasOne<Category>().WithMany().HasForeignKey(x => x.CategoryId).IsRequired();
+
+        // todo: find better solution
+        builder.Property(x => x.Answers).HasConversion(
+            x => JsonConvert.SerializeObject(x),
+            x => JsonConvert.DeserializeObject<List<Answer>>(x))
+            .IsRequired();
     }
 }

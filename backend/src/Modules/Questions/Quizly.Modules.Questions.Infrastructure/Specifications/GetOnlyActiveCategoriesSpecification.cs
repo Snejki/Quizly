@@ -9,5 +9,11 @@ public sealed class GetOnlyActiveCategoriesSpecification : Specification<Categor
     public GetOnlyActiveCategoriesSpecification()
     {
         Query.Where(x => x.IsActive);
+        Query.Select(x => new GetCategoryListQueryResponse.Category()
+        {
+            IsActive = x.IsActive,
+            Id = x.Id.Id,
+            Name = x.Name
+        });
     }
 }

@@ -13,6 +13,7 @@ public static class QuestionsInfrastructure
     {
         services.AddTransient<ICategoryRepository, CategoryRepository>();
         services.AddTransient<ICategoryReadonlyRepository, CategoryReadOnlyRepository>();
+        services.AddTransient<IQuestionRepository, QuestionRepository>();
         services.AddCustomDbContext<QuestionsDbContext>();
         services.AddHostedService<QuestionsDatabaseInitializer>();
     }
