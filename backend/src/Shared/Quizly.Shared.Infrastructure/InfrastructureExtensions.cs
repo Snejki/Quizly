@@ -12,6 +12,7 @@ using Quizly.Shared.Infrastructure.Exceptions;
 using Quizly.Shared.Infrastructure.Logger;
 using Quizly.Shared.Infrastructure.Mediatr;
 using Quizly.Shared.Infrastructure.Modules;
+using Quizly.Shared.Infrastructure.Repositories;
 using Quizly.Shared.Infrastructure.Validations;
 
 namespace Quizly.Shared.Infrastructure;
@@ -41,6 +42,8 @@ public static class InfrastructureExtensions
                 });
         });
         builder.Host.AddCustomLogger();
+
+        builder.Services.AddScoped(typeof(IReadOnlyRepository<,>), typeof(ReadOnlyRepository<,>));
 
         builder.Services.Configure<JwtOptions>(configuration.GetSection(JwtOptions.Path));
     }
