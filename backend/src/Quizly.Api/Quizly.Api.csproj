@@ -9,6 +9,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Modules\Questions\Quizly.Modules.Questions.Api\Quizly.Modules.Questions.Api.csproj" />
+      <ProjectReference Include="..\Modules\Quizes\Quizly.Modules.Quizes.Api\Quizly.Modules.Quizes.Api.csproj" />
       <ProjectReference Include="..\Modules\Users\Quizly.Modules.Users.Api\Quizly.Modules.Users.Api.csproj" />
       <ProjectReference Include="..\Shared\Quizly.Shared.Infrastructure\Quizly.Shared.Infrastructure.csproj" />
     </ItemGroup>

@@ -59,6 +59,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quizly.Shared.Tests.Integra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quizly.Modules.Questions.Tests.Integration", "src\Modules\Questions\Quizly.Modules.Questions.Tests.Integration\Quizly.Modules.Questions.Tests.Integration.csproj", "{96F7ED68-548C-4546-863D-2C51FBABAD94}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Quizes", "Quizes", "{C6ADA6FB-B3DE-435C-B920-EF400302343D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quizly.Modules.Quizes.Application", "src\Modules\Quizes\Quizly.Modules.Quizes.Application\Quizly.Modules.Quizes.Application.csproj", "{E828E4F1-7F09-4398-BF2E-D21B24EDFF36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quizly.Modules.Quizes.Infrastructure", "src\Modules\Quizes\Quizly.Modules.Quizes.Infrastructure\Quizly.Modules.Quizes.Infrastructure.csproj", "{65CACF00-8F39-4F5F-B3E8-818CE6A3C9D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quizly.Modules.Quizes.Api", "src\Modules\Quizes\Quizly.Modules.Quizes.Api\Quizly.Modules.Quizes.Api.csproj", "{D57748D6-019D-4583-BF10-C6CBAD615BAE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -141,6 +149,18 @@ Global
 		{96F7ED68-548C-4546-863D-2C51FBABAD94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96F7ED68-548C-4546-863D-2C51FBABAD94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96F7ED68-548C-4546-863D-2C51FBABAD94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E828E4F1-7F09-4398-BF2E-D21B24EDFF36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E828E4F1-7F09-4398-BF2E-D21B24EDFF36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E828E4F1-7F09-4398-BF2E-D21B24EDFF36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E828E4F1-7F09-4398-BF2E-D21B24EDFF36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65CACF00-8F39-4F5F-B3E8-818CE6A3C9D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65CACF00-8F39-4F5F-B3E8-818CE6A3C9D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65CACF00-8F39-4F5F-B3E8-818CE6A3C9D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65CACF00-8F39-4F5F-B3E8-818CE6A3C9D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D57748D6-019D-4583-BF10-C6CBAD615BAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D57748D6-019D-4583-BF10-C6CBAD615BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D57748D6-019D-4583-BF10-C6CBAD615BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D57748D6-019D-4583-BF10-C6CBAD615BAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -170,6 +190,10 @@ Global
 		{CE01EB3B-6C58-4B65-8CB1-05C605EB2F88} = {91B684AD-E7BA-4C5C-BA44-6BB82892613D}
 		{AAFB3F86-40D4-462E-897F-9356C7F30EE3} = {701129D1-B780-4ADF-8D66-AFB75CCA054F}
 		{96F7ED68-548C-4546-863D-2C51FBABAD94} = {91B684AD-E7BA-4C5C-BA44-6BB82892613D}
+		{C6ADA6FB-B3DE-435C-B920-EF400302343D} = {18CC546D-C3F1-4226-8811-247891A58BFE}
+		{E828E4F1-7F09-4398-BF2E-D21B24EDFF36} = {C6ADA6FB-B3DE-435C-B920-EF400302343D}
+		{65CACF00-8F39-4F5F-B3E8-818CE6A3C9D5} = {C6ADA6FB-B3DE-435C-B920-EF400302343D}
+		{D57748D6-019D-4583-BF10-C6CBAD615BAE} = {C6ADA6FB-B3DE-435C-B920-EF400302343D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {008465E6-9378-4128-B9CE-BBA0FEC6F8AC}

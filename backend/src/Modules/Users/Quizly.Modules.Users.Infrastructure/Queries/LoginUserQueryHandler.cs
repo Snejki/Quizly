@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.Extensions.Logging;
 using Quizly.Modules.Users.Application.Exceptions;
 using Quizly.Modules.Users.Application.Queries;
 using Quizly.Modules.Users.Application.Services;
@@ -7,6 +8,7 @@ using Quizly.Modules.Users.Domain.Entities;
 using Quizly.Modules.Users.Domain.Repositories;
 using Quizly.Modules.Users.Infrastructure.Mappers;
 using Quizly.Shared.Abstractions.Clock;
+using Serilog.Context;
 
 namespace Quizly.Modules.Users.Infrastructure.Queries;
 
@@ -32,7 +34,7 @@ internal sealed class LoginUserQueryHandler : IRequestHandler<LoginUserQuery, Lo
 
     public async Task<LoginUserResponse> Handle(LoginUserQuery query, CancellationToken cancellationToken)
     {
-         var login = new Login(query.Login);
+        var login = new Login(query.Login);
 
          var user = await _userRepository.GetByLogin(login, cancellationToken);
          if (user is null)
