@@ -19,17 +19,20 @@ internal sealed class LoginUserQueryHandler : IRequestHandler<LoginUserQuery, Lo
     private readonly ITokenService _tokenService;
     private readonly IPasswordService _passwordService;
     private readonly IClock _clock;
+    private readonly ILogger<LoginUserQueryHandler> _logger;
 
     public LoginUserQueryHandler(
         IUserRepository userRepository,
         ITokenService tokenService,
         IPasswordService passwordService,
-        IClock clock)
+        IClock clock,
+        ILogger<LoginUserQueryHandler> logger)
     {
         _userRepository = userRepository;
         _tokenService = tokenService;
         _passwordService = passwordService;
         _clock = clock;
+        _logger = logger;
     }
 
     public async Task<LoginUserResponse> Handle(LoginUserQuery query, CancellationToken cancellationToken)
